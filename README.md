@@ -23,6 +23,7 @@ Nothing is installed or downloaded without your approval, and no target is touch
 
 | Group | Count | Examples |
 | --- | --- | --- |
+| `skills/core/` | 1 | step-cyskills — project bootstrap and preflight, install first |
 | `skills/web-app/` | 7 | api-security, code-audit, js-reverse, browser-automation, supply-chain-security |
 | `skills/cloud-identity/` | 4 | cloud-k8s, identity-federation, email-security, llm-security |
 | `skills/windows-endpoint/` | 3 | windows-ad, edr-bypass-re, thick-client |
@@ -31,7 +32,6 @@ Nothing is installed or downloaded without your approval, and no target is touch
 | `skills/hardware-embedded/` | 4 | firmware-pentest, hardware-security, ot-ics, radio-sdr |
 | `skills/dfir-intel/` | 5 | digital-forensics, malware-analysis, threat-hunting, threat-intelligence |
 | `skills/offensive-tooling/` | 5 | pentest-tools, attack-chain, wifi-wireless, docs-generator |
-| `skills/step-cyskills/` | 1 | project bootstrap and preflight |
 
 ## Resources
 
