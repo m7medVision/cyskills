@@ -1,0 +1,20 @@
+---
+name: wifi-wireless
+description: "Use for authorized wireless security assessment including Wi-Fi capture, WPA handshake analysis, rogue AP detection research, and lab-only deauth testing."
+---
+
+# Wi-Fi / Wireless Security
+
+## Workflow
+
+1. See references/overview.md for the full procedure.
+
+## References
+
+- `references/overview.md`
+- `references/wireless-lab-rules.md`
+
+## Before you start
+
+- Confirm authorization scope via `step-cyskills` (`scope.md`); do not act outside it.
+- Verify tools first; `step-cyskills` preflight reports missing tools with distro install commands.

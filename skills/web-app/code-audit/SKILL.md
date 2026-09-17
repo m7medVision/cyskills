@@ -1,0 +1,23 @@
+---
+name: code-audit
+description: "Use for authorized source-code security review and SAST workflows including Semgrep, CodeQL patterns, dangerous API hunting, and fix verification."
+---
+
+# Source Code Security Audit
+
+## Workflow
+
+1. 范围与威胁模型
+2. 自动扫描
+3. 人工验证（MUST）
+4. 产出
+
+## References
+
+- `references/overview.md`
+- `references/sast-review-checklist.md`
+
+## Before you start
+
+- Confirm authorization scope via `step-cyskills` (`scope.md`); do not act outside it.
+- Verify tools first; `step-cyskills` preflight reports missing tools with distro install commands.
