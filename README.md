@@ -2,8 +2,6 @@
 
 Cybersecurity skills for agents.
 
-Built for real engagements (pentest, red team, reverse engineering, DFIR, reporting) — not CTF.
-
 ## Install the core
 
 ```bash
@@ -19,12 +17,12 @@ Then run the `step-cyskills` skill once per project. It:
 
 Nothing is installed or downloaded without your approval, and no target is touched until `scripts/scope-guard.sh` passes.
 
-## Skills (44)
+## Skills (43)
 
 | Group | Count | Examples |
 | --- | --- | --- |
 | `skills/core/` | 1 | step-cyskills — project bootstrap and preflight, install first |
-| `skills/web-app/` | 8 | api-security, api-mitmproxy, code-audit, js-reverse, browser-automation (single browser entry), supply-chain-security |
+| `skills/web-app/` | 7 | api-security, api-mitmproxy, code-audit, js-reverse, browser-automation (single browser entry), supply-chain-security |
 | `skills/cloud-identity/` | 4 | cloud-k8s, identity-federation, email-security, llm-security |
 | `skills/windows-endpoint/` | 3 | windows-ad, edr-bypass-re, thick-client |
 | `skills/binary-re/` | 12 | reverse-engineering, ida-reverse, ghidra-reverse, radare2, dotnet-reverse, pwn-chain |
