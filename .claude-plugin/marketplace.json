@@ -1,0 +1,125 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
+  "name": "cyskills",
+  "owner": {
+    "name": "cyskills"
+  },
+  "description": "Cybersecurity skills for real work: offensive, reverse engineering, DFIR and tooling.",
+  "plugins": [
+    {
+      "name": "core",
+      "source": "./",
+      "description": "Project bootstrap and preflight. Install this first.",
+      "category": "core",
+      "skills": [
+        "./skills/core/step-cyskills"
+      ]
+    },
+    {
+      "name": "web-app",
+      "source": "./",
+      "description": "Web and application security: APIs, databases, browsers, code review, supply chain.",
+      "category": "web-app",
+      "skills": [
+        "./skills/web-app/api-security",
+        "./skills/web-app/browser-automation",
+        "./skills/web-app/browser-extension-reverse",
+        "./skills/web-app/code-audit",
+        "./skills/web-app/database-security",
+        "./skills/web-app/js-reverse",
+        "./skills/web-app/supply-chain-security"
+      ]
+    },
+    {
+      "name": "cloud-identity",
+      "source": "./",
+      "description": "Cloud, identity, email and LLM attack surfaces.",
+      "category": "cloud-identity",
+      "skills": [
+        "./skills/cloud-identity/cloud-k8s",
+        "./skills/cloud-identity/email-security",
+        "./skills/cloud-identity/identity-federation",
+        "./skills/cloud-identity/llm-security"
+      ]
+    },
+    {
+      "name": "windows-endpoint",
+      "source": "./",
+      "description": "Windows, Active Directory, endpoint evasion and thick clients.",
+      "category": "windows-endpoint",
+      "skills": [
+        "./skills/windows-endpoint/edr-bypass-re",
+        "./skills/windows-endpoint/thick-client",
+        "./skills/windows-endpoint/windows-ad"
+      ]
+    },
+    {
+      "name": "reverse-engineering",
+      "source": "./",
+      "description": "Binary reverse engineering and exploit development.",
+      "category": "binary-re",
+      "skills": [
+        "./skills/binary-re/binary-diff",
+        "./skills/binary-re/binary-ninja-reverse",
+        "./skills/binary-re/dotnet-reverse",
+        "./skills/binary-re/ghidra-reverse",
+        "./skills/binary-re/go-rust-reverse",
+        "./skills/binary-re/ida-reverse",
+        "./skills/binary-re/macos-reverse",
+        "./skills/binary-re/patch-diff-exploit",
+        "./skills/binary-re/protocol-reverse",
+        "./skills/binary-re/pwn-chain",
+        "./skills/binary-re/radare2",
+        "./skills/binary-re/reverse-engineering"
+      ]
+    },
+    {
+      "name": "mobile",
+      "source": "./",
+      "description": "Android and iOS application security.",
+      "category": "mobile",
+      "skills": [
+        "./skills/mobile/apk-reverse",
+        "./skills/mobile/mobile-reverse"
+      ]
+    },
+    {
+      "name": "hardware-embedded",
+      "source": "./",
+      "description": "Firmware, hardware, OT/ICS and RF/SDR assessment.",
+      "category": "hardware-embedded",
+      "skills": [
+        "./skills/hardware-embedded/firmware-pentest",
+        "./skills/hardware-embedded/hardware-security",
+        "./skills/hardware-embedded/ot-ics",
+        "./skills/hardware-embedded/radio-sdr"
+      ]
+    },
+    {
+      "name": "forensics-intel",
+      "source": "./",
+      "description": "Forensics, malware analysis, threat hunting and intelligence.",
+      "category": "dfir-intel",
+      "skills": [
+        "./skills/dfir-intel/case-review",
+        "./skills/dfir-intel/digital-forensics",
+        "./skills/dfir-intel/malware-analysis",
+        "./skills/dfir-intel/threat-hunting",
+        "./skills/dfir-intel/threat-intelligence"
+      ]
+    },
+    {
+      "name": "offensive-tooling",
+      "source": "./",
+      "description": "Offensive toolchain and reporting helpers.",
+      "category": "offensive-tooling",
+      "skills": [
+        "./skills/offensive-tooling/attack-chain",
+        "./skills/offensive-tooling/diagram-generator",
+        "./skills/offensive-tooling/docs-generator",
+        "./skills/offensive-tooling/pentest-tools",
+        "./skills/offensive-tooling/wifi-wireless"
+      ]
+    }
+  ]
+}
