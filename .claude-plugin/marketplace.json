@@ -7,7 +7,7 @@
   "description": "Cybersecurity skills for real work: offensive, reverse engineering, DFIR and tooling.",
   "plugins": [
     {
-      "name": "core",
+      "name": "a.-core",
       "source": "./",
       "description": "Project bootstrap and preflight. Install this first.",
       "category": "core",
@@ -16,7 +16,7 @@
       ]
     },
     {
-      "name": "web-app",
+      "name": "b.-web-app",
       "source": "./",
       "description": "Web and application security: APIs, databases, browsers, code review, supply chain.",
       "category": "web-app",
@@ -31,7 +31,7 @@
       ]
     },
     {
-      "name": "cloud-identity",
+      "name": "c.-cloud-identity",
       "source": "./",
       "description": "Cloud, identity, email and LLM attack surfaces.",
       "category": "cloud-identity",
@@ -43,7 +43,7 @@
       ]
     },
     {
-      "name": "windows-endpoint",
+      "name": "d.-windows-endpoint",
       "source": "./",
       "description": "Windows, Active Directory, endpoint evasion and thick clients.",
       "category": "windows-endpoint",
@@ -54,7 +54,7 @@
       ]
     },
     {
-      "name": "reverse-engineering",
+      "name": "e.-reverse-engineering",
       "source": "./",
       "description": "Binary reverse engineering and exploit development.",
       "category": "binary-re",
@@ -74,7 +74,7 @@
       ]
     },
     {
-      "name": "mobile",
+      "name": "f.-mobile",
       "source": "./",
       "description": "Android and iOS application security.",
       "category": "mobile",
@@ -84,7 +84,7 @@
       ]
     },
     {
-      "name": "hardware-embedded",
+      "name": "g.-hardware-embedded",
       "source": "./",
       "description": "Firmware, hardware, OT/ICS and RF/SDR assessment.",
       "category": "hardware-embedded",
@@ -96,7 +96,7 @@
       ]
     },
     {
-      "name": "forensics-intel",
+      "name": "h.-forensics-intel",
       "source": "./",
       "description": "Forensics, malware analysis, threat hunting and intelligence.",
       "category": "dfir-intel",
@@ -109,7 +109,7 @@
       ]
     },
     {
-      "name": "offensive-tooling",
+      "name": "i.-offensive-tooling",
       "source": "./",
       "description": "Offensive toolchain and reporting helpers.",
       "category": "offensive-tooling",
