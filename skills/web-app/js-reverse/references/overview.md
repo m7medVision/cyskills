@@ -147,21 +147,21 @@
 - 输出契约：`output-contract.md`
 
 
-## 路由上下文
+## 路由上下文 / Routing
 
-**上游入口**: `skills/SKILL.md`（总控）、routing.md
-**上游备选**:
-- anything-analyzer MCP（端口 23816）的浏览器工具可作为替代或补充
-- jshookmcp 可作为更强的浏览器/CDP/Hook/Network/SourceMap/AST 执行面
-- `reverse-engineering/SKILL.md`（如果目标不是前端 JS）
+**Upstream**: `browser-automation`（持有 Playwright/Chromium 实例）、`api-mitmproxy`（mitmdump 抓包）。组合步骤见 `automation-entry.md`。
 
-**下游出口**:
+**Optional enhanced execution surface**:
+- `jshookmcp` MCP — deeper CDP / Hook / network instrumentation
+- anything-analyzer MCP — HTTP capture alternative
+
+**Downstream (same skill)**:
 - 需补环境 → `env-patching.md`
 - 需本地复现 → `local-rebuild.md` / `node-env-rebuild.md`
 - 需去混淆 → `ast-deobfuscation.md`
 - 走不通时回退 → `fallbacks.md`
 
-**同级关联模块**: anything-analyzer MCP（浏览器自动化和 HTTP 捕获能力可以互补）
+**同级关联**: `browser-automation`（浏览器持有者）、`api-mitmproxy`（抓包）
 
 
 ## 按需自举（On-Demand Bootstrap）

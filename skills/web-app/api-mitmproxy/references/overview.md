@@ -2,6 +2,11 @@
 
 Headless scriptable proxy for agents. :8080. HTTP/1-3+WS. `-q` quiet; addons print JSON to stdout.
 
+## Composition
+
+- Browser client is owned by `browser-automation`: launch Playwright Chromium with `--proxy-server=http://127.0.0.1:8080` and `--remote-debugging-port=9222` (add `--proxy-bypass-list=<-loopback>` for localhost).
+- `js-reverse` attaches with `--browserUrl http://127.0.0.1:9222` and correlates its runtime evidence with these flows.
+
 ## Flags
 
 `-w f` flows · `-s a.py` addon, hot-reload ~1s · `-C f` client replay · `-nr f` saved flows · `--set hardump=out.har` · `--set allow_hosts='re'` scope gate (also `ignore_hosts`) · `--anticache` · `--listen-host 0.0.0.0` · `--set ssl_insecure=true` labs · `--mode regular|transparent` (iptables)`|reverse:URL` (impersonate server, `-p 443`)`|upstream:URL` (chain).

@@ -10,7 +10,7 @@ Agent workflow: everything runs through `mitmdump` + Python addons — no intera
 ## Agent loop
 
 1. Enforce scope: `--set allow_hosts='target\.com'` — out-of-scope hosts are never intercepted
-2. Start capture in background: `mitmdump -q -w t.flow --listen-port 8080`; point the client (curl/app/browser under automation) at the proxy
+2. Start capture in background: `mitmdump -q -w t.flow --listen-port 8080`; point the client at the proxy
 3. Parse flows offline with `FlowReader` → build target model: endpoints, methods, auth headers, params, content types
 4. Write an addon (`mitmdump -q -s probe.py`): module-level `def request(flow)` / `def response(flow)` hooks modify traffic live; addon `print`s JSON findings for the agent to parse; editing probe.py hot-reloads (~1s), iterate without restart
 5. Replay: `mitmdump -C t.flow` (client replay) or re-run with a modifying addon
@@ -22,6 +22,7 @@ Agent workflow: everything runs through `mitmdump` + Python addons — no intera
 
 - `references/overview.md` — mitmdump flags, modes, CA cert, capture/replay/HAR, filter expressions, pinning bypass, troubleshooting
 - `references/testing.md` — addon hooks, target-model extraction, probe patterns, OWASP API Top 10, CI, safety
+- Browser client is `browser-automation`; `js-reverse` attaches to it.
 
 ## Before you start
 

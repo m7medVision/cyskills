@@ -1,6 +1,6 @@
 ---
 name: js-reverse
-description: "在使用 js-reverse-mcp 做前端 JavaScript 逆向时使用，适用于签名链路定位、页面观察取证、运行时采样、本地补环境复现与证据化输出。优先适配当前环境里的 js-reverse_* 工具，需要更强的浏览器/CDP/Hook 面时联动 jshookmcp。"
+description: "Use for front-end JavaScript reverse engineering: locating signing, crypto or risk-control code, observing page requests, runtime sampling, and rebuilding the logic locally in Node. Composes with the browser-automation skill (Playwright/Chromium) and the api-mitmproxy skill. Trigger keywords: JS 逆向, 签名链路, 加密参数, 补环境, js-reverse, CDP, sourcemap, AST deobfuscation."
 ---
 
 # MCP 前端 JS 逆向作业规范
