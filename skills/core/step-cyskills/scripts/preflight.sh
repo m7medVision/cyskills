@@ -38,7 +38,7 @@ printf '  %-4s %-14s %s\n' "?" "tool" "install if missing"
 while IFS='|' read -r name probe apt pac aur pip purpose; do
   [ -z "$name" ] && continue
   case "$name" in \#*) continue ;; esac
-  if eval "$probe" >/dev/null 2>&1; then
+  if eval "$probe" </dev/null >/dev/null 2>&1; then
     printf '  %-4s %-14s %s\n' "ok" "$name" "$purpose"
   else
     printf '  %-4s %-14s %s\n' "MISS" "$name" "$(hint "$apt" "$pac" "$aur" "$pip" "" "$name" "$purpose")"
