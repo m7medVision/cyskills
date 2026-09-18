@@ -108,16 +108,16 @@
       ]
     },
     {
-      "name": "i.-offensive-tooling",
+      "name": "i.-pentest",
       "source": "./",
       "description": "Offensive toolchain and reporting helpers.",
-      "category": "offensive-tooling",
+      "category": "pentest",
       "skills": [
-        "./skills/offensive-tooling/attack-chain",
-        "./skills/offensive-tooling/diagram-generator",
-        "./skills/offensive-tooling/docs-generator",
-        "./skills/offensive-tooling/pentest-tools",
-        "./skills/offensive-tooling/wifi-wireless"
+        "./skills/pentest/attack-chain",
+        "./skills/pentest/diagram-generator",
+        "./skills/pentest/docs-generator",
+        "./skills/pentest/pentest-tools",
+        "./skills/pentest/wifi-wireless"
       ]
     }
   ]
