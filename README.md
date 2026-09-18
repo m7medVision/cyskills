@@ -17,7 +17,7 @@ Then run the `step-cyskills` skill once per project. It:
 
 Nothing is installed or downloaded without your approval, and no target is touched until `scripts/scope-guard.sh` passes.
 
-## Skills (43)
+## Skills (50)
 
 | Group | Count | Examples |
 | --- | --- | --- |
@@ -29,7 +29,7 @@ Nothing is installed or downloaded without your approval, and no target is touch
 | `skills/mobile/` | 2 | apk-reverse, mobile-reverse |
 | `skills/hardware-embedded/` | 4 | firmware-pentest, hardware-security, ot-ics, radio-sdr |
 | `skills/dfir-intel/` | 5 | digital-forensics, malware-analysis, threat-hunting, threat-intelligence |
-| `skills/pentest/` | 5 | pentest-tools, attack-chain, wifi-wireless, docs-generator |
+| `skills/pentest/` | 12 | pentest-tools, attack-chain, recon-pipeline, nmap, nuclei, ffuf, sqlmap, netexec, password-cracking, wifi-wireless |
 
 ## Attribution
 
