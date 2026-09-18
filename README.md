@@ -29,7 +29,7 @@ Nothing is installed or downloaded without your approval, and no target is touch
 | `skills/mobile/` | 2 | apk-reverse, mobile-reverse |
 | `skills/hardware-embedded/` | 4 | firmware-pentest, hardware-security, ot-ics, radio-sdr |
 | `skills/dfir-intel/` | 5 | digital-forensics, malware-analysis, threat-hunting, threat-intelligence |
-| `skills/offensive-tooling/` | 5 | pentest-tools, attack-chain, wifi-wireless, docs-generator |
+| `skills/pentest/` | 5 | pentest-tools, attack-chain, wifi-wireless, docs-generator |
 
 ## Attribution
 
