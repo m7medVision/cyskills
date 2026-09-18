@@ -23,7 +23,6 @@
       "skills": [
         "./skills/web-app/api-security",
         "./skills/web-app/browser-automation",
-        "./skills/web-app/browser-extension-reverse",
         "./skills/web-app/code-audit",
         "./skills/web-app/database-security",
         "./skills/web-app/js-reverse",
