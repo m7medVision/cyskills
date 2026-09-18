@@ -21,6 +21,7 @@
       "description": "Web and application security: APIs, databases, browsers, code review, supply chain.",
       "category": "web-app",
       "skills": [
+        "./skills/web-app/api-mitmproxy",
         "./skills/web-app/api-security",
         "./skills/web-app/browser-automation",
         "./skills/web-app/code-audit",
@@ -79,6 +80,7 @@
       "category": "mobile",
       "skills": [
         "./skills/mobile/apk-reverse",
+        "./skills/mobile/mobile-pentest",
         "./skills/mobile/mobile-reverse"
       ]
     },
@@ -110,13 +112,22 @@
     {
       "name": "i.-pentest",
       "source": "./",
-      "description": "Offensive toolchain and reporting helpers.",
+      "description": "Penetration testing pipeline: orchestration, recon, scanning, web exploitation, credential attacks, and reporting.",
       "category": "pentest",
       "skills": [
         "./skills/pentest/attack-chain",
         "./skills/pentest/diagram-generator",
         "./skills/pentest/docs-generator",
+        "./skills/pentest/ffuf",
+        "./skills/pentest/js-api-extract",
+        "./skills/pentest/nmap",
+        "./skills/pentest/netexec",
+        "./skills/pentest/nuclei",
+        "./skills/pentest/password-cracking",
         "./skills/pentest/pentest-tools",
+        "./skills/pentest/recon-pipeline",
+        "./skills/pentest/source-leak-hunt",
+        "./skills/pentest/sqlmap",
         "./skills/pentest/wifi-wireless"
       ]
     }
