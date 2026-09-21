@@ -117,7 +117,6 @@
         "./skills/pentest/task-code-audit",
         "./skills/pentest/task-credential-recovery",
         "./skills/pentest/task-db-post-access",
-        "./skills/pentest/task-diagram",
         "./skills/pentest/task-js-api-extract",
         "./skills/pentest/task-recon",
         "./skills/pentest/task-report",

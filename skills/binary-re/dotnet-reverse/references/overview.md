@@ -146,7 +146,6 @@ File → Save Module → 替换原文件
 - NativeAOT 产物 → `reverse-engineering/`（同上，native）
 - 纯 native PE（无 CLR）→ `reverse-engineering/` / `ida-reverse/`
 - 需要符号/函数批量迁移到别的版本 → `binary-diff/`
-- 需要画攻击路径 / 调用链图 → `task-diagram/`
 
 ## 路由上下文
 

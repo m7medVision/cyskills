@@ -17,7 +17,7 @@ The install ships the kernel (`step-cyskills`) and every workflow entrypoint. Th
 
 Nothing is installed or downloaded without your approval, and no target is touched until `scripts/scope-guard.sh` passes.
 
-## Skills (56)
+## Skills (55)
 
 | Group | Count | Examples |
 | --- | --- | --- |
@@ -29,7 +29,7 @@ Nothing is installed or downloaded without your approval, and no target is touch
 | `skills/mobile/` | 2 | apk-reverse, mobile-reverse (Android workflow → workflow-mobile-pentest; MASTG device content in pentest-core) |
 | `skills/hardware-embedded/` | 4 | firmware-pentest, hardware-security, ot-ics, radio-sdr |
 | `skills/dfir-intel/` | 5 | digital-forensics, malware-analysis, threat-hunting, threat-intelligence |
-| `skills/pentest/` | 22 | pentest-core (engine), attack-chain (orchestrator); tools: nmap, nuclei, ffuf, sqlmap, netexec, api-mitmproxy, browser-automation, metasploit; tasks: task-recon, task-js-api-extract, task-source-leak-hunt, task-credential-recovery, task-wifi-assessment, task-code-audit, task-db-post-access, task-supply-chain, task-report, task-diagram; deep dives: js-reverse, src-hunter |
+| `skills/pentest/` | 21 | pentest-core (engine), attack-chain (orchestrator); tools: nmap, nuclei, ffuf, sqlmap, netexec, api-mitmproxy, browser-automation, metasploit; tasks: task-recon, task-js-api-extract, task-source-leak-hunt, task-credential-recovery, task-wifi-assessment, task-code-audit, task-db-post-access, task-supply-chain, task-report; deep dives: js-reverse, src-hunter |
 
 ## Attribution
 
