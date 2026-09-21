@@ -7,9 +7,9 @@ description: "Use for authorized macOS and Mach-O reverse engineering including 
 
 ## Workflow
 
-1. 包体与签名
-2. 静态
-3. 动态
+1. Bundle and signing
+2. Static
+3. Dynamic
 
 ## References
 

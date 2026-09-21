@@ -1,57 +1,57 @@
 
-# 跨版本符号迁移 (Binary Diff)
+# Cross-Version Symbol Migration (Binary Diff)
 
-## 适用范围
+## Applicability
 
-当任务属于以下场景时使用本 skill：
+Use this skill when a task matches one of the following scenarios:
 
-1. **内核/驱动缺 PDB** — 有旧版 ntoskrnl.exe 的符号，新版 PDB 被微软下架，需要用旧版符号推导新版非导出函数地址
-2. **程序更新后符号迁移** — 曾经逆向过某个程序，程序更新了，不想重新逆一遍，用旧版结果批量迁移
-3. **保护机制更新** — 旧版有完整逆向结果，新版需要快速定位同一函数的新偏移
-4. **任何"有旧版符号 + 新版无符号"的二进制对比场景**
+1. **Kernel/driver missing PDB** — You have symbols for an old version of ntoskrnl.exe, the new PDB was pulled by Microsoft, and you need to deduce new-version non-exported function addresses from the old symbols.
+2. **Symbol migration after a program update** — You once reverse-engineered a program, the program updated, you don't want to reverse it again, so you batch-migrate using the old results.
+3. **Protection mechanism update** — The old version has complete reverse-engineering results; the new version needs the new offsets of the same functions located quickly.
+4. **Any "old version has symbols + new version has none" binary comparison scenario.**
 
-### 与其他 skill 的分工
+### Division of labor with other skills
 
-| 场景 | 用什么 |
+| Scenario | What to use |
 |------|--------|
-| 从零开始逆向一个二进制 | `ida-reverse/` 或 `radare2/` |
-| 有旧版结果，迁移到新版 | **本 skill** |
-| 两个完全不同的二进制对比 | BinDiff / Diaphora（传统工具） |
+| Reverse-engineer a binary from scratch | `ida-reverse/` or `radare2/` |
+| Have old results, migrate to new version | **this skill** |
+| Compare two completely different binaries | BinDiff / Diaphora (traditional tools) |
 
-### 核心优势
+### Core advantages
 
-相比传统方案：
+Compared with traditional approaches:
 
-| 方案 | 200 个函数成本 | 时间 | 准确率 |
+| Approach | Cost for 200 functions | Time | Accuracy |
 |------|--------------|------|--------|
-| 人工开两个 IDA 窗口对比 | 免费但耗命 | 数小时 | 高 |
-| BinDiff 自动匹配 | 免费 | 快 | 中（结构变化大时失效） |
-| 完全交给 Agent（CC/Codex） | 50-100 元 | 慢 | 高 |
-| **本 skill（LLM 批量比对）** | **~1 元** | **~10 秒/函数** | **高** |
+| Manually compare two IDA windows | Free but life-draining | Hours | High |
+| BinDiff automatic matching | Free | Fast | Medium (fails when structure changes a lot) |
+| Fully hand over to an Agent (CC/Codex) | 50-100 yuan | Slow | High |
+| **This skill (LLM batch comparison)** | **~1 yuan** | **~10 sec/function** | **High** |
 
-## 核心原理
+## Core principle
 
 ```text
-旧版函数（有符号）          新版同一函数（无符号）
+Old function (with symbols)          Same function in new version (no symbols)
     ↓                              ↓
-导出反汇编 + 伪代码          导出反汇编 + 伪代码
+Export disassembly + pseudocode      Export disassembly + pseudocode
     ↓                              ↓
-    └──────── LLM 结构化比对 ────────┘
+    └──────── LLM structured comparison ────────┘
                     ↓
-         输出 YAML（符号映射表）
+          Output YAML (symbol mapping table)
                     ↓
-         程序化解析 → 批量应用到新版 IDB
+          Programmatic parsing → batch apply to new IDB
 ```
 
-关键点：
-- prompt 是固定模板，程序化填充
-- 输入输出格式确定，程序化解析
-- LLM 只负责"看两段代码，找出对应关系"这一步
-- 时间成本和 token 成本极低
+Key points:
+- The prompt is a fixed template, filled programmatically
+- Input/output format is deterministic, parsed programmatically
+- The LLM only handles the step "look at two code fragments, find the correspondences"
+- Time cost and token cost are extremely low
 
-## Prompt 模板
+## Prompt template
 
-### 标准比对 Prompt
+### Standard comparison prompt
 
 ```text
 I have disassembly outputs and procedure code of the same function.
@@ -127,75 +127,75 @@ found_struct_offset: # This is for reference to struct offset. NOTE THAT virtual
 If nothing found, output an empty YAML. DO NOT output anything other than the desired YAML. DO NOT collect unrelated symbols.
 ```
 
-### 变量说明
+### Variable descriptions
 
-| 变量 | 来源 | 说明 |
+| Variable | Source | Description |
 |------|------|------|
-| `{disasm_for_reference}` | 旧版 IDA 导出 | 有符号的反汇编 |
-| `{procedure_for_reference}` | 旧版 IDA 导出 | 有符号的伪代码 |
-| `{disasm_code}` | 新版 IDA 导出 | 无符号的反汇编 |
-| `{procedure}` | 新版 IDA 导出 | 无符号的伪代码 |
-| `{symbol_name_list}` | 从旧版提取 | 需要在新版中定位的符号列表 |
+| `{disasm_for_reference}` | Old-version IDA export | Disassembly with symbols |
+| `{procedure_for_reference}` | Old-version IDA export | Pseudocode with symbols |
+| `{disasm_code}` | New-version IDA export | Disassembly without symbols |
+| `{procedure}` | New-version IDA export | Pseudocode without symbols |
+| `{symbol_name_list}` | Extracted from old version | List of symbols to locate in the new version |
 
-## 工作流
+## Workflow
 
-### 完整流程
+### Full workflow
 
 ```text
-Step 1: 准备数据
-  - 旧版二进制加载到 IDA（有 PDB/符号）
-  - 新版二进制加载到 IDA（无符号）
-  - 找到两个版本中相同的锚点函数（导出函数、字符串引用等）
+Step 1: Prepare data
+  - Load the old-version binary into IDA (with PDB/symbols)
+  - Load the new-version binary into IDA (no symbols)
+  - Find anchor functions that are identical in both versions (exported functions, string references, etc.)
 
-Step 2: 批量导出
-  - 从旧版导出：锚点函数的反汇编 + 伪代码（含符号名）
-  - 从新版导出：同一锚点函数的反汇编 + 伪代码（无符号名）
+Step 2: Batch export
+  - Export from old version: disassembly + pseudocode of the anchor function (including symbol names)
+  - Export from new version: disassembly + pseudocode of the same anchor function (no symbol names)
 
-Step 3: LLM 比对
-  - 用 prompt 模板填充数据
-  - 调用 LLM API（推荐：deepseek 量大便宜，超大函数切 gpt）
-  - 解析返回的 YAML
+Step 3: LLM comparison
+  - Fill the prompt template with data
+  - Call the LLM API (recommended: deepseek for high volume and low cost, switch to gpt for very large functions)
+  - Parse the returned YAML
 
-Step 4: 应用结果
-  - 将 YAML 中的符号映射批量应用到新版 IDB
-  - 用 idapro_rename 或 IDAPython 脚本批量重命名
+Step 4: Apply results
+  - Batch-apply the symbol mappings from the YAML to the new IDB
+  - Batch-rename with idapro_rename or an IDAPython script
 
-Step 5: 迭代
-  - 第一轮迁移的函数成为新的锚点
-  - 进入这些函数，继续对比内部调用
-  - 重复直到覆盖所有目标函数
+Step 5: Iterate
+  - Functions migrated in the first round become new anchors
+  - Enter these functions and continue comparing internal calls
+  - Repeat until all target functions are covered
 ```
 
-### 锚点选择策略
+### Anchor selection strategy
 
-| 锚点类型 | 可靠性 | 说明 |
+| Anchor type | Reliability | Description |
 |---------|--------|------|
-| 导出函数 | 最高 | 名字不变，地址可能变 |
-| 字符串引用 | 高 | 字符串内容不变，引用位置可能变 |
-| 常量/魔数 | 中 | 特征值不变 |
-| 代码模式 | 中 | 函数结构相似但地址全变 |
+| Exported function | Highest | Name unchanged, address may change |
+| String reference | High | String content unchanged, reference location may change |
+| Constant/magic value | Medium | Feature value unchanged |
+| Code pattern | Medium | Function structure similar but all addresses change |
 
-### 批量处理建议
+### Batch processing recommendations
 
-- 每次比对 1 个函数（避免 context 爆炸）
-- 中等函数（<200 行）用 deepseek
-- 超大函数（>500 行）切 gpt-4o 或 claude
-- 并发调用提高速度（10-20 并发）
-- 结果缓存，避免重复调用
+- Compare 1 function at a time (avoid context explosion)
+- Use deepseek for medium functions (<200 lines)
+- Switch to gpt-4o or claude for very large functions (>500 lines)
+- Use concurrency to speed up (10-20 concurrent)
+- Cache results to avoid repeated calls
 
-## 输出格式
+## Output format
 
-### YAML 输出的 5 种符号类型
+### The 5 symbol types of YAML output
 
-| 类型 | 含义 | 关键字段 |
+| Type | Meaning | Key fields |
 |------|------|---------|
-| `found_vcall` | 虚函数调用（间接 call） | `vfunc_offset`, `func_name` |
-| `found_call` | 直接函数调用 | `insn_va`, `func_name` |
-| `found_funcptr` | 函数指针引用 | `insn_va`, `funcptr_name` |
-| `found_gv` | 全局变量引用 | `insn_va`, `gv_name` |
-| `found_struct_offset` | 结构体偏移引用 | `offset`, `struct_name`, `member_name` |
+| `found_vcall` | Virtual function call (indirect call) | `vfunc_offset`, `func_name` |
+| `found_call` | Direct function call | `insn_va`, `func_name` |
+| `found_funcptr` | Function pointer reference | `insn_va`, `funcptr_name` |
+| `found_gv` | Global variable reference | `insn_va`, `gv_name` |
+| `found_struct_offset` | Struct offset reference | `offset`, `struct_name`, `member_name` |
 
-### 解析后的应用动作
+### Apply actions after parsing
 
 ```text
 found_call → idapro_rename(addr=call_target, name=func_name)
@@ -205,84 +205,84 @@ found_gv → idapro_rename(addr=gv_addr, name=gv_name)
 found_struct_offset → idapro_set_comments(addr=insn_va, comment="{struct_name}.{member_name}")
 ```
 
-## 典型场景示例
+## Typical scenarios
 
-### 场景 1：ntoskrnl.exe 缺 PDB
-
-```text
-已有：ntoskrnl.exe 10.0.26100.2000 + 完整 PDB
-目标：ntoskrnl.exe 10.0.26100.2605（PDB 被下架）
-需求：定位 PspSetCreateProcessNotifyRoutine 的新地址
-
-步骤：
-1. 两个版本都加载到 IDA
-2. 找到导出函数 PsSetCreateProcessNotifyRoutine（两个版本都有）
-3. 旧版中它调用了 PspSetCreateProcessNotifyRoutine（有符号）
-4. 新版中它调用了 sub_140822108（无符号）
-5. LLM 一眼看出：sub_140822108 = PspSetCreateProcessNotifyRoutine
-6. 批量应用
-```
-
-### 场景 2：应用更新后迁移
+### Scenario 1: ntoskrnl.exe missing PDB
 
 ```text
-已有：target.exe v1.0 的完整逆向结果（200+ 函数已命名）
-目标：target.exe v1.1（所有符号丢失）
-需求：批量迁移 200 个函数名
+Have: ntoskrnl.exe 10.0.26100.2000 + full PDB
+Target: ntoskrnl.exe 10.0.26100.2605 (PDB pulled)
+Need: locate the new address of PspSetCreateProcessNotifyRoutine
 
-步骤：
-1. 从旧版导出所有已命名函数的反汇编+伪代码
-2. 在新版中通过导出函数/字符串找到对应锚点
-3. 批量调用 LLM 比对
-4. 解析 YAML，批量 rename
-5. 迭代深入
+Steps:
+1. Load both versions into IDA
+2. Find exported function PsSetCreateProcessNotifyRoutine (present in both versions)
+3. In the old version it calls PspSetCreateProcessNotifyRoutine (with symbols)
+4. In the new version it calls sub_140822108 (no symbols)
+5. The LLM sees at a glance: sub_140822108 = PspSetCreateProcessNotifyRoutine
+6. Batch apply
 ```
 
-## LLM 选择建议
+### Scenario 2: Migration after an application update
 
-| 模型 | 适合场景 | 成本 | 速度 |
+```text
+Have: complete reverse-engineering results for target.exe v1.0 (200+ functions named)
+Target: target.exe v1.1 (all symbols lost)
+Need: batch-migrate 200 function names
+
+Steps:
+1. Export disassembly+pseudocode of all named functions from the old version
+2. In the new version, find corresponding anchors via exported functions/strings
+3. Batch-call the LLM for comparison
+4. Parse YAML, batch rename
+5. Iterate deeper
+```
+
+## LLM selection recommendations
+
+| Model | Suitable scenario | Cost | Speed |
 |------|---------|------|------|
-| DeepSeek V3 | 中小函数（<200 行），批量处理 | 极低 | 快 |
-| GPT-4o | 超大函数，复杂控制流 | 中 | 快 |
-| Claude Sonnet | 中大函数，需要推理 | 中 | 快 |
-| Claude Opus | 极复杂函数，需要深度理解 | 高 | 慢 |
+| DeepSeek V3 | Small/medium functions (<200 lines), batch processing | Very low | Fast |
+| GPT-4o | Very large functions, complex control flow | Medium | Fast |
+| Claude Sonnet | Medium/large functions, needs reasoning | Medium | Fast |
+| Claude Opus | Extremely complex functions, needs deep understanding | High | Slow |
 
-推荐策略：默认 DeepSeek，遇到 context 超限或结果不准时自动升级。
+Recommended strategy: DeepSeek by default; automatically upgrade when context is exceeded or results are inaccurate.
 
-## 注意事项
+## Notes
 
-- **不要把整个二进制丢给 LLM** — 一次只比对一个函数
-- **锚点必须可靠** — 如果锚点本身就对错了，后续全部白费
-- **结果需要人工抽检** — LLM 不是 100% 准确，关键符号要验证
-- **缓存中间结果** — 避免重复调用浪费 token
-- **注意 context 限制** — 超大函数（>1000 行反汇编）需要拆分或用大 context 模型
+- **Do not throw the whole binary at the LLM** — compare only one function at a time
+- **Anchors must be reliable** — if an anchor itself is wrong, everything downstream is wasted
+- **Results need manual spot checks** — the LLM is not 100% accurate; key symbols must be verified
+- **Cache intermediate results** — avoid wasting tokens on repeated calls
+- **Mind context limits** — very large functions (>1000 lines of disassembly) need splitting or a large-context model
 
 
-## 按需自举（On-Demand Bootstrap）
+## On-Demand Bootstrap
 
-### 工具依赖
+### Tool dependencies
 
-| 工具 | 用途 | 可自动安装 |
+| Tool | Purpose | Auto-installable |
 |------|------|-----------|
-| IDA Pro | 导出反汇编/伪代码 | ✗（商业软件） |
-| Python | 脚本执行、API 调用 | ✓ |
-| PyYAML | 解析 LLM 返回的 YAML | ✓（pip install pyyaml） |
-| LLM API | 执行比对 | 需要 API key |
+| IDA Pro | Export disassembly/pseudocode | ✗ (commercial software) |
+| Python | Script execution, API calls | ✓ |
+| PyYAML | Parse the YAML returned by the LLM | ✓ (pip install pyyaml) |
+| LLM API | Perform comparison | Requires an API key |
 
-### 说明
+### Notes
 
-本 skill 的核心不依赖重型工具安装，主要依赖：
-- IDA Pro 已有（用 `ida-reverse/` skill 管理）
-- Python + requests/httpx（调 API）
-- 一个 LLM API endpoint
+The core of this skill does not depend on heavy tool installation, it mainly depends on:
+- IDA Pro already present (managed with the `ida-reverse/` skill)
+- Python + requests/httpx (to call the API)
+- An LLM API endpoint
 
 
-## 路由上下文
+## Routing context
 
-**上游入口**: `skills/SKILL.md`（总控）、routing.md
-**触发条件**: 有旧版符号/逆向结果，需要迁移到新版本
-**下游出口**:
-- 需要先打开二进制 → `ida-reverse/`
-- 需要快速侦察确认版本差异 → `radare2/`
+**Upstream entry**: `skills/SKILL.md` (master control), routing.md
+**Trigger condition**: You have old-version symbols/reverse-engineering results and need to migrate to a new version
+**Downstream exit**:
+- Need to open the binary first → `ida-reverse/`
+- Need quick reconnaissance to confirm version differences → `radare2/`
 
-**同级关联模块**: `ida-reverse/`（数据导出和符号应用都通过 IDA）
+**Sibling associated modules**: `ida-reverse/` (data export and symbol application both go through IDA)

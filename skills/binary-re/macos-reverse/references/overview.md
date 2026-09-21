@@ -1,17 +1,17 @@
 
 # macOS / Mach-O Reverse Engineering
 
-## 适用场景
+## Use cases
 
-- Mach-O 可执行文件 / dylib / framework
-- .app bundle、LaunchAgent/Daemon
-- Objective-C / Swift 符号与 runtime
-- 公证/签名、Hardened Runtime、TCC 相关行为分析
-- macOS 恶意软件静态/动态分析（联合 malware-analysis）
+- Mach-O executables / dylib / framework
+- .app bundles, LaunchAgent/Daemon
+- Objective-C / Swift symbols and runtime
+- Notarization/signing, Hardened Runtime, and TCC-related behavior analysis
+- macOS malware static/dynamic analysis (together with malware-analysis)
 
-## 工作流
+## Workflow
 
-### 1. 包体与签名
+### 1. Bundle and signing
 
 ```bash
 file target
@@ -20,38 +20,38 @@ spctl -a -vv target 2>&1
 otool -L target
 ```
 
-### 2. 静态
+### 2. Static
 
 ```text
 □ class-dump / swift-demangle / Hopper / Ghidra / IDA
-□ 字符串与 XPC 服务名、TCC 敏感 API
-□ LC_LOAD_dylib 依赖与 rpath
+□ Strings, XPC service names, TCC-sensitive APIs
+□ LC_LOAD_dylib dependencies and rpath
 ```
 
-### 3. 动态
+### 3. Dynamic
 
 ```text
 □ lldb / Frida
-□ fs_usage / log stream 观察
-□ 网络：联合 protocol-reverse 或代理
+□ fs_usage / log stream observation
+□ Network: together with protocol-reverse or a proxy
 ```
 
-## 工具链
+## Toolchain
 
-| 工具 | 用途 |
-|------|------|
-| otool / nm / codesign | 系统自带 |
-| Hopper / Ghidra / IDA | 反编译 |
+| Tool | Purpose |
+|------|---------|
+| otool / nm / codesign | Built into the system |
+| Hopper / Ghidra / IDA | Decompilation |
 | class-dump / dsdump | ObjC |
-| Frida / lldb | 动态 |
+| Frida / lldb | Dynamic |
 | jtool2 | Mach-O |
 
-## 参考
+## References
 
 - `macho-triage.md`
-- `the `mobile-reverse` skill`（iOS） `the `ghidra-reverse` skill` `the `malware-analysis` skill`
+- `the `mobile-reverse` skill` (iOS) `the `ghidra-reverse` skill` `the `malware-analysis` skill`
 
-## 路由上下文
+## Routing context
 
-**上游**: MASTER R31  
-**下游**: iOS → mobile-reverse；通用样本 → malware-analysis
+**Upstream**: MASTER R31  
+**Downstream**: iOS → mobile-reverse; general samples → malware-analysis

@@ -1,69 +1,69 @@
 
 # Ghidra Reverse Engineering
 
-## 适用场景
+## Use cases
 
-- 无 IDA 许可证时的主逆向入口
-- 批量 headless 分析 / CI 中反编译
-- Ghidra 脚本（Java/Python Jython/PyGhidra）自动化
-- 与 `binary-diff` / `patch-diff-exploit` 的 ghidriff 联动
+- Primary reverse-engineering entry point when you have no IDA license
+- Batch headless analysis / decompilation in CI
+- Ghidra scripting (Java/Python Jython/PyGhidra) automation
+- ghidriff integration with `binary-diff` / `patch-diff-exploit`
 
-## 与 IDA 分工
+## Division of labor with IDA
 
-| 需求 | 优先 |
+| Need | Preferred |
 |------|------|
-| 已有 IDA MCP 深挖 | `ida-reverse/` |
-| 开源 / 批量 / 教学 | **本 skill** |
-| 仅 CLI 快速侦察 | `radare2/` |
+| Existing IDA MCP deep-dive | `ida-reverse/` |
+| Open-source / batch / teaching | **this skill** |
+| CLI-only quick recon | `radare2/` |
 
-## 工作流
+## Workflow
 
-### 1. 项目与自动分析
-
-```text
-□ 新建 Project → Import 文件 → Analyze（默认分析器）
-□ 记录语言/编译器识别结果与基址
-□ 标记入口、导出表、字符串 xref
-```
-
-### 2. 关键函数
+### 1. Project and auto-analysis
 
 ```text
-□ 从字符串 / 导入 API 反查
-□ Decompile 窗口还原算法
-□ 重命名函数/变量；写 Plate comment
-□ 需要动态时交接 Frida/GDB（reverse-engineering 动态章）
+□ New Project → Import file → Analyze (default analyzers)
+□ Record the language/compiler identification result and base address
+□ Mark entry point, export table, string xrefs
 ```
 
-### 3. Headless（批量）
+### 2. Key functions
+
+```text
+□ Trace back from strings / imported APIs
+□ Recover the algorithm in the Decompile window
+□ Rename functions/variables; write Plate comments
+□ Hand off to Frida/GDB when dynamic analysis is needed (reverse-engineering dynamic chapter)
+```
+
+### 3. Headless (batch)
 
 ```bash
-# 示例：analyzeHeadless 路径因安装而异，MUST 从 tool-index 取
+# Example: the analyzeHeadless path varies by installation; you MUST take it from the tool-index
 analyzeHeadless /path/to/project Proj -import sample.bin -postScript ExportDecomp.py
 ```
 
-### 4. MCP（若已配置）
+### 4. MCP (if configured)
 
 ```text
-□ 确认 ghidra MCP 端口（常见 8765，以 tool-index 为准）
-□ 用 MCP 工具拉反编译 / xrefs，禁止猜端口
+□ Confirm the ghidra MCP port (commonly 8765; the tool-index is authoritative)
+□ Use MCP tools to pull decompilation / xrefs; do not guess the port
 ```
 
-## 工具链
+## Toolchain
 
-| 工具 | 用途 | 自举 |
+| Tool | Purpose | Bootstrap |
 |------|------|------|
-| Ghidra | 反编译主工具 | 手动 release / 包管理器 |
-| ghidra-mcp | AI 桥 | bootstrap 能力名 `ghidra-mcp` |
-| ghidriff | 补丁差分 | 见 `patch-diff-exploit` |
+| Ghidra | Main decompilation tool | manual release / package manager |
+| ghidra-mcp | AI bridge | bootstrap capability name `ghidra-mcp` |
+| ghidriff | patch diffing | see `patch-diff-exploit` |
 
-## 参考
+## References
 
 - `ghidra-cheatsheet.md`
 - `the `ida-reverse` skill` `the `radare2` skill` `the `binary-diff` skill`
 
-## 路由上下文
+## Routing context
 
-**上游**: MASTER R22  
-**下游**: 动态验证 → Frida/GDB；利用 → `pwn-chain`  
-**同级**: `ida-reverse`（商业深挖）
+**Upstream**: MASTER R22  
+**Downstream**: dynamic verification → Frida/GDB; exploitation → `pwn-chain`  
+**Peer**: `ida-reverse` (commercial deep-dive)

@@ -7,10 +7,10 @@ description: "Use for authorized security testing of desktop thick clients inclu
 
 ## Workflow
 
-1. 建边界
-2. 本地攻击面
-3. 网络面
-4. 逆向验证
+1. Establish boundaries
+2. Local attack surface
+3. Network surface
+4. Reverse-engineering validation
 
 ## References
 

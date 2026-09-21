@@ -7,10 +7,10 @@ description: "Use for blue-team threat hunting, detection engineering with Sigma
 
 ## Workflow
 
-1. 建假说
-2. 查询与堆叠
-3. 规则化
-4. 验证
+1. Form a hypothesis
+2. Query and stack
+3. Codify as rules
+4. Validate
 
 ## References
 

@@ -7,10 +7,10 @@ description: "Use for authorized digital forensics including memory dumps, disk 
 
 ## Workflow
 
-1. 保全
-2. 内存
-3. 主机伪影
-4. 网络
+1. Preservation
+2. Memory
+3. Host artifacts
+4. Network
 
 ## References
 

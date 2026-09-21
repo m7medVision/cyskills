@@ -7,9 +7,9 @@ description: "Use for authorized Active Directory and Windows identity attacks i
 
 ## Workflow
 
-1. 枚举
-2. 常见路径（先图后枪）
-3. 凭证与横向
+1. Enumeration
+2. Common paths (map first, then exploit)
+3. Credentials and lateral movement
 
 ## References
 

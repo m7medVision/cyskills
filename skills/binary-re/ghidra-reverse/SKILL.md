@@ -7,10 +7,10 @@ description: "Use for free/open reverse engineering with Ghidra (headless or GUI
 
 ## Workflow
 
-1. 项目与自动分析
-2. 关键函数
-3. Headless（批量）
-4. MCP（若已配置）
+1. Project and auto-analysis
+2. Key functions
+3. Headless (batch)
+4. MCP (if configured)
 
 ## References
 

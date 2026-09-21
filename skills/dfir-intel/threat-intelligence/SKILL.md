@@ -7,11 +7,11 @@ description: "Use for authorized OSINT and cyber threat intelligence that enrich
 
 ## Workflow
 
-1. 定义情报问题
-2. 采集公开 X 数据
-3. 规范化与去重
-4. 关联与独立核验
-5. 交接情报包
+1. Define the intelligence question
+2. Collect public X data
+3. Normalize and deduplicate
+4. Correlate and independently verify
+5. Hand off the intelligence package
 
 ## References
 

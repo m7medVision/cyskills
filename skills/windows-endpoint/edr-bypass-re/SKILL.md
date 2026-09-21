@@ -1,18 +1,18 @@
 ---
 name: edr-bypass-re
-description: "逆向防御方实现 → 红队针对性绕过。把 EDR / Defender / AV 的 hook 表、ETW provider、AMSI 实现先逆向出来， 再写针对性的 unhook / 间接 syscall / ETW patch / call stack spoof。对照 MITRE ATT&CK T1562 防御规避。 触发关键词：EDR 绕过、AV bypass、免杀、unhook、direct syscall、indirect syscall、Hell's Gate、Halo's Gate、 Tartarus Gate、ETW patch、AMSI patch、call stack spoofing、hardware breakpoint Blindside、MITRE T1562、 ntdll unhook、kernel callback、CrowdStrike 绕过、Defender 绕过、Sentinel One 绕过、Elastic Defend、 Sysmon 规避、PPID spoof、Sleep mask、Process Hollowing、Reflective DLL。"
+description: "Reverse the defender's implementation → targeted red-team bypass. First reverse-engineer EDR / Defender / AV hook tables, ETW providers, and AMSI implementations, then write targeted unhook / indirect syscall / ETW patch / call stack spoof. Mapped to MITRE ATT&CK T1562 defense evasion. Trigger keywords: EDR bypass, AV bypass, AV evasion, unhook, direct syscall, indirect syscall, Hell's Gate, Halo's Gate, Tartarus Gate, ETW patch, AMSI patch, call stack spoofing, hardware breakpoint Blindside, MITRE T1562, ntdll unhook, kernel callback, CrowdStrike bypass, Defender bypass, Sentinel One bypass, Elastic Defend, Sysmon evasion, PPID spoof, sleep mask, process hollowing, reflective DLL."
 ---
 
-# EDR 绕过：从防御方实现逆向到红队绕过
+# EDR Bypass: From Reversing Defender Implementations to Red Team Bypass
 
 ## Workflow
 
-1. Step 1：识别目标主机的 EDR
-2. Step 2：从 EDR DLL 提 hook 表
-3. Step 3：选绕过技术组合
-4. Step 4：在 implant 中实现
-5. Step 5：本地 sandbox 验证
-6. Step 6：投递
+1. Step 1: Identify the target host's EDR
+2. Step 2: Extract the hook table from the EDR DLL
+3. Step 3: Choose the bypass technique combination
+4. Step 4: Implement it in the implant
+5. Step 5: Validate in a local sandbox
+6. Step 6: Deliver
 
 ## References
 

@@ -7,13 +7,13 @@ description: "Use this skill whenever the user wants to analyze binaries with ra
 
 ## Workflow
 
-1. 常用工作流
-2. 工作流 1：快速侦察
-3. 工作流 2：交互式分析函数
-4. 工作流 3：定位 main / 关键逻辑
-5. 工作流 4：十六进制与内存查看
-6. 工作流 5：二进制 patch
-7. 工作流 6：非交互自动化
+1. Common workflows
+2. Workflow 1: quick recon
+3. Workflow 2: interactive function analysis
+4. Workflow 3: locate main / key logic
+5. Workflow 4: hex and memory viewing
+6. Workflow 5: binary patch
+7. Workflow 6: non-interactive automation
 
 ## References
 

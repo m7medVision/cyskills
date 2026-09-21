@@ -1,66 +1,66 @@
 
 # Windows / Active Directory Security
 
-## 适用场景
+## Applicable Scenarios
 
-- 域渗透、Kerberoasting、AS-REP、委派
-- AD CS（ESC1–ESC8 等）证书攻击
-- BloodHound / SharpHound 攻击路径
-- NTLM Relay / Coercer 强制认证
-- 本地提权到域路径（Potato 等作为跳板）
+- Domain penetration, Kerberoasting, AS-REP, delegation
+- AD CS (ESC1–ESC8, etc.) certificate attacks
+- BloodHound / SharpHound attack paths
+- NTLM Relay / Coercer forced authentication
+- Local privilege escalation to domain paths (Potato, etc. as a stepping stone)
 
-## 与 attack-chain 关系
+## Relationship with attack-chain
 
-- **多阶段从外网到域控** → PRIMARY 可仍是 `attack-chain/`，本 skill 为 **AD 专科**
-- **已在域内专注身份** → PRIMARY = 本 skill
+- **Multi-stage from external network to domain controller** → PRIMARY can still be `attack-chain/`; this skill is the **AD specialty**
+- **Already inside the domain, focused on identity** → PRIMARY = this skill
 
-## 工作流
+## Workflow
 
-### 1. 枚举
+### 1. Enumeration
 
 ```bash
-# 示例 Impacket / 内置（需凭据与授权）
+# Example Impacket / built-in (requires credentials and authorization)
 nxc smb <range> -u user -p pass
 bloodhound-python -d domain.local -u user -p pass -c All -ns <DC>
 ```
 
-### 2. 常见路径（先图后枪）
+### 2. Common paths (map first, then exploit)
 
 ```text
-□ Kerberoast / AS-REP → 离线破解
-□ ACL 滥用（GenericAll/WriteDacl）
-□ 委派（非约束/约束/基于资源）
-□ AD CS 模板错误 → Certipy
-□ 中继：LLMNR/NBT-NS + ntlmrelayx（确认授权）
+□ Kerberoast / AS-REP → offline cracking
+□ ACL abuse (GenericAll/WriteDacl)
+□ Delegation (unconstrained/constrained/resource-based)
+□ AD CS template misconfiguration → Certipy
+□ Relay: LLMNR/NBT-NS + ntlmrelayx (confirm authorization)
 ```
 
-### 3. 凭证与横向
+### 3. Credentials and lateral movement
 
 ```text
-□ secretsdump / lsassy / mimikatz（严格授权与清理）
-□ PtH / PtT / 黄金票仅在授权红队范围
-□ 每步写 Evidence；高危等用户确认
+□ secretsdump / lsassy / mimikatz (strict authorization and cleanup)
+□ PtH / PtT / golden ticket only within authorized red-team scope
+□ Write Evidence at every step; await user confirmation for high-risk actions
 ```
 
-## 工具链
+## Toolchain
 
-| 工具 | 用途 |
+| Tool | Purpose |
 |------|------|
-| BloodHound / SharpHound | 路径图 |
+| BloodHound / SharpHound | Path graph |
 | Certipy | AD CS |
-| Impacket / NetExec | 横向与枚举 |
-| Rubeus / Mimikatz | 票据与凭证（授权） |
-| Coercer / Responder | 强制认证 / 投毒 |
+| Impacket / NetExec | Lateral movement and enumeration |
+| Rubeus / Mimikatz | Tickets and credentials (authorized) |
+| Coercer / Responder | Forced authentication / poisoning |
 
-## 参考
+## References
 
 - `ad-attack-paths.md`
 - `network-attack-defense.md`
 - `the `attack-chain` skill`
 - seeds: `field-journal/seed-005_ad-certipy-esc1.md` seed-007_ntlm-relay-coercer.md seed-013_kerberoasting-spn.md
 
-## 路由上下文
+## Routing Context
 
-**上游**: MASTER R24  
-**下游**: 报告 `task-report`；需 EDR 研究 `edr-bypass-re`  
-**MUST NOT**: 无授权 DCSync / 黄金票打生产
+**Upstream**: MASTER R24
+**Downstream**: report via `task-report`; for EDR research use `edr-bypass-re`
+**MUST NOT**: DCSync / golden ticket against production without authorization

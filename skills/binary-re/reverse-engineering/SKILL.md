@@ -11,7 +11,7 @@ allowed-tools: Bash Read Write Edit Glob Grep Task WebFetch WebSearch
 ## Workflow
 
 1. Decision-framework entry hook
-2. 默认沙盒上下文（Default Sandbox Context）
+2. Default Sandbox Context
 3. Prerequisites
 4. Additional Resources
 5. When to Pivot

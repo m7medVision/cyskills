@@ -1,21 +1,21 @@
 ---
 name: dotnet-reverse
-description: ".NET / C# 二进制逆向。当目标是 .NET assembly（PE 头含 CLR、.exe/.dll 托管程序）、C# 编译产物（含 NativeAOT）、红队 Sharp* 工具（Rubeus / SharpHound / SharpHound 等）、.NET 混淆程序（ConfuserEx / SmartAssembly / Babel / Eazfuscator）、.NET loader / info-stealer / 套壳 malware 时使用。优先用 dnSpyEx + de4dot，需要 AI 直接操作时联动 dnSpy MCP。不用于纯 native 二进制（走 reverse-engineering / ida-reverse）。"
+description: ".NET / C# binary reverse engineering. Use when the target is a .NET assembly (PE header containing CLR, managed .exe/.dll), C# compiled output (including NativeAOT), red-team Sharp* tools (Rubeus / SharpHound / SharpHound etc.), .NET obfuscated programs (ConfuserEx / SmartAssembly / Babel / Eazfuscator), or .NET loader / info-stealer / packed malware. Prefer dnSpyEx + de4dot; when an AI must operate directly, pair with the dnSpy MCP. Not for pure native binaries (use reverse-engineering / ida-reverse)."
 license: MIT
-compatibility: Requires a filesystem-based code agent or CLI with shell access, Windows host preferred (dnSpyEx 是 Windows GUI)；Linux/macOS 可用 ILSpy/de4dot CLI + mono/dotnet runtime。
+compatibility: Requires a filesystem-based code agent or CLI with shell access, Windows host preferred (dnSpyEx is a Windows GUI); Linux/macOS can use the ILSpy/de4dot CLI + mono/dotnet runtime.
 allowed-tools: Bash Read Write Edit Glob Grep Task WebFetch WebSearch
 ---
 
-# .NET / C# 逆向作业规范
+# .NET / C# Reverse Engineering Guidelines
 
 ## Workflow
 
-1. Identify（识别 .NET）
-2. Detect（检测混淆器）
-3. Deobfuscate（脱混淆）
-4. Static Analyze（静态分析）
-5. Dynamic（动态调试）
-6. Patch（按需修改）
+1. Identify (identify .NET)
+2. Detect (detect the obfuscator)
+3. Deobfuscate
+4. Static Analyze
+5. Dynamic (dynamic debugging)
+6. Patch (modify as needed)
 
 ## References
 

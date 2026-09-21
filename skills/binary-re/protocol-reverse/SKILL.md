@@ -7,10 +7,10 @@ description: "Use for authorized reverse engineering of custom binary protocols,
 
 ## Workflow
 
-1. Phase 1 — 采集与分诊
-2. Phase 2 — 帧布局还原
-3. Phase 3 — 序列化与加密
-4. Phase 4 — 产物
+1. Phase 1 — Collection and Triage
+2. Phase 2 — Frame Layout Recovery
+3. Phase 3 — Serialization and Encryption
+4. Phase 4 — Deliverables
 
 ## References
 

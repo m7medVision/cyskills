@@ -1,25 +1,25 @@
 
 # Digital Forensics & IR Artifacts
 
-## 适用场景
+## Use cases
 
-- 内存转储分析（Volatility 2/3）
-- 磁盘/ E01 / 落地文件时间线
-- PCAP 溯源与协议还原（可联合 `protocol-reverse/`）
-- 主机伪影：Prefetch、Shimcache、Event Log、浏览器历史
-- 应急响应 IOC 提炼（联合 `malware-analysis/` / `threat-hunting/`）
+- Memory dump analysis (Volatility 2/3)
+- Disk / E01 / dropped-file timelines
+- PCAP tracing and protocol reconstruction (can combine with `protocol-reverse/`)
+- Host artifacts: Prefetch, Shimcache, Event Log, browser history
+- Incident response IOC extraction (combine with `malware-analysis/` / `threat-hunting/`)
 
-## 工作流
+## Workflow
 
-### 1. 保全
+### 1. Preservation
 
 ```text
-□ 计算 SHA256；记录时区与采集命令
-□ 工作在副本上；原始只读
-□ chain of custody 备注写入 timeline
+□ Compute SHA256; record timezone and acquisition command
+□ Work on copies; keep originals read-only
+□ Write chain of custody notes into the timeline
 ```
 
-### 2. 内存
+### 2. Memory
 
 ```bash
 vol -f mem.dmp windows.info
@@ -28,37 +28,37 @@ vol -f mem.dmp windows.netscan
 vol -f mem.dmp windows.cmdline
 ```
 
-### 3. 主机伪影
+### 3. Host artifacts
 
 ```text
-□ 事件日志：Security / PowerShell / Sysmon
-□ 持久化：Run 键、服务、计划任务、WMI
-□ 执行痕迹：Amcache、Prefetch、BAM
+□ Event logs: Security / PowerShell / Sysmon
+□ Persistence: Run keys, services, scheduled tasks, WMI
+□ Execution traces: Amcache, Prefetch, BAM
 ```
 
-### 4. 网络
+### 4. Network
 
 ```text
-□ tshark 统计会话与 DNS
-□ 导出可疑流 → protocol-reverse 或 malware C2 分析
+□ tshark session and DNS statistics
+□ Export suspicious streams → protocol-reverse or malware C2 analysis
 ```
 
-## 工具链
+## Toolchain
 
-| 工具 | 用途 |
-|------|------|
-| Volatility 3 | 内存 |
-| Timeline Explorer / Plaso | 超级时间线 |
+| Tool | Purpose |
+|------|---------|
+| Volatility 3 | Memory |
+| Timeline Explorer / Plaso | Super timeline |
 | tshark | PCAP |
-| Eric Zimmerman 工具集 | Windows 伪影 |
-| Autopsy / FTK Imager | 磁盘 |
+| Eric Zimmerman tools | Windows artifacts |
+| Autopsy / FTK Imager | Disk |
 
-## 参考
+## References
 
 - `forensics-triage.md`
 - `the `malware-analysis` skill` `the `threat-hunting` skill` `the `protocol-reverse` skill`
 
-## 路由上下文
+## Routing context
 
-**上游**: MASTER R25  
-**下游**: 恶意样本深挖 → malware-analysis；规则 → threat-hunting
+**Upstream**: MASTER R25
+**Downstream**: Malware deep dive → malware-analysis; rules → threat-hunting
