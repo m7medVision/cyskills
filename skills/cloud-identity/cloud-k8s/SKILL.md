@@ -7,9 +7,9 @@ description: "Use for authorized cloud, container, and Kubernetes security asses
 
 ## Workflow
 
-1. Phase 1 — 身份与边界
-2. Phase 2 — 云控制面
-3. Phase 3 — 容器
+1. Phase 1 — Identity and boundaries
+2. Phase 2 — Cloud control plane
+3. Phase 3 — Containers
 4. Phase 4 — Kubernetes
 
 ## References

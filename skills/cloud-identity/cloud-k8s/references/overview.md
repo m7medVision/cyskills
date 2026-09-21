@@ -1,46 +1,46 @@
 
 # Cloud / Container / Kubernetes Security
 
-## 适用场景
+## Applicable scenarios
 
-- 云元数据 SSRF（169.254.169.254 / IMDS）
-- IAM 过度权限、公开存储桶、错误安全组
-- Docker/containerd 逃逸路径评估
-- Kubernetes RBAC、Secrets、Admission、供应链镜像
-- 容器镜像漏洞（可联动 `task-supply-chain/`）
+- Cloud metadata SSRF (169.254.169.254 / IMDS)
+- IAM excessive permissions, public storage buckets, misconfigured security groups
+- Docker/containerd escape path assessment
+- Kubernetes RBAC, Secrets, Admission, supply-chain images
+- Container image vulnerabilities (can integrate with `task-supply-chain/`)
 
-## 工作流
+## Workflow
 
-### Phase 1 — 身份与边界
+### Phase 1 — Identity and boundaries
 
 ```text
-□ 当前身份：云 AK/SK、K8s SA、节点 SSH？
-□ 范围：单账号 / 单 cluster / 单 namespace
-□ 网络档：authorized_target_only
+□ Current identity: cloud AK/SK, K8s SA, node SSH?
+□ Scope: single account / single cluster / single namespace
+□ Network profile: authorized_target_only
 ```
 
-### Phase 2 — 云控制面
+### Phase 2 — Cloud control plane
 
 ```bash
-# 示例（按厂商替换；MUST 在授权账号内）
+# Example (replace per vendor; MUST stay within the authorized account)
 aws sts get-caller-identity
 aws s3 ls
-# Azure / GCP 对应 identity 命令
+# Corresponding identity commands for Azure / GCP
 ```
 
 ```text
-□ 公开桶 / 错误 ACL
-□ 元数据：IMDSv1 vs v2；SSRF 链
-□ 角色可扮演（PassRole）与横向
+□ Public buckets / wrong ACLs
+□ Metadata: IMDSv1 vs v2; SSRF chain
+□ Roles assumable (PassRole) and lateral movement
 ```
 
-### Phase 3 — 容器
+### Phase 3 — Containers
 
 ```text
-□ 是否 privileged / hostPath / hostNetwork
-□ capabilities（SYS_ADMIN 等）
-□ 可写宿主机路径 → 逃逸候选
-□ 镜像历史与已知 CVE → Trivy
+□ privileged / hostPath / hostNetwork?
+□ capabilities (SYS_ADMIN, etc.)
+□ Writable host paths → escape candidates
+□ Image history and known CVEs → Trivy
 ```
 
 ### Phase 4 — Kubernetes
@@ -52,29 +52,29 @@ kubectl get clusterrolebindings
 ```
 
 ```text
-□ SA token 挂载与权限
-□ 危险 admission webhook 缺失
-□ etcd / dashboard 暴露
-□ 网络策略是否默认放行
+□ SA token mounting and permissions
+□ Missing dangerous admission webhooks
+□ etcd / dashboard exposure
+□ Whether network policies default to allow
 ```
 
-## 工具链
+## Toolchain
 
-| 工具 | 用途 | 自举 |
-|------|------|------|
-| kubectl | 集群交互 | 手动 |
-| trivy | 镜像/IaC | bootstrap `trivy` 若可用 |
-| kube-bench / kubeaudit | CIS/配置 | 手动 |
-| pacu / scoutsuite | 云审计（授权） | 手动 |
-| nuclei | 已知云漏洞模板 | bootstrap nmap/nuclei 生态 |
+| Tool | Purpose | Bootstrap |
+|------|---------|-----------|
+| kubectl | Cluster interaction | Manual |
+| trivy | Images/IaC | bootstrap `trivy` if available |
+| kube-bench / kubeaudit | CIS/configuration | Manual |
+| pacu / scoutsuite | Cloud audit (authorized) | Manual |
+| nuclei | Known cloud vulnerability templates | bootstrap nmap/nuclei ecosystem |
 
-## 参考
+## References
 
 - `k8s-cloud-checklist.md`
 - `the `task-supply-chain` skill` `the `pentest-core` skill`
 
-## 路由上下文
+## Routing context
 
-**上游**: MASTER R23  
-**下游**: 拿到节点 shell → `attack-chain` / `windows-ad`；镜像漏洞 → supply-chain  
-**MUST NOT**: 未授权扫公有云其他租户
+**Upstream**: MASTER R23  
+**Downstream**: get a node shell → `attack-chain` / `windows-ad`; image vulnerabilities → supply-chain  
+**MUST NOT**: scan other tenants of a public cloud without authorization

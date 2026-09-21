@@ -1,38 +1,38 @@
 
 # Hardware / Embedded Interface Security
 
-## 适用场景
+## When to use
 
-- UART / JTAG / SWD 调试口发现
-- 启动日志、root shell、引导打断
-- 配合拆机提取 Flash
-- 安全启动/加密 Flash 的可行性评估（非破坏性优先）
+- UART / JTAG / SWD debug port discovery
+- Boot logs, root shell, boot interruption
+- Combined with teardown to extract Flash
+- Feasibility assessment of secure boot/encrypted Flash (non-destructive first)
 
-## 工作流
+## Workflow
 
 ```text
-□ 拆解授权设备；拍照标注测试点
-□ 万用表找 GND/VCC/TX/RX；逻辑电平 1.8/3.3/5V
-□ USB-TTL 只读日志；记录波特率
-□ JTAG：枚举 IDCODE；评估是否锁定
-□ 提取镜像 → 交接 firmware-pentest / ghidra
+□ Disassemble the authorized device; photograph and mark test points
+□ Find GND/VCC/TX/RX with a multimeter; logic levels 1.8/3.3/5V
+□ USB-TTL read-only logs; record the baud rate
+□ JTAG: enumerate IDCODE; assess whether it is locked
+□ Extract the image → hand off to firmware-pentest / ghidra
 ```
 
-## 工具链
+## Toolchain
 
-| 工具 | 用途 |
-|------|------|
+| Tool | Purpose |
+|------|---------|
 | USB-TTL / logic analyzer | UART |
-| J-Link / CMSIS-DAP | 调试 |
-| bus pirate / flipper（实验室） | 多协议 |
-| binwalk / flashrom | 提取 |
+| J-Link / CMSIS-DAP | Debugging |
+| bus pirate / flipper (lab) | Multi-protocol |
+| binwalk / flashrom | Extraction |
 
-## 参考
+## References
 
 - `debug-interface-triage.md`
 - `the `firmware-pentest` skill` `the `ot-ics` skill`
 
-## 路由上下文
+## Routing context
 
-**上游**: MASTER R34  
-**MUST NOT**: 未授权拆机/损坏他人设备
+**Upstream**: MASTER R34  
+**MUST NOT**: unauthorized teardown/damage of others' devices

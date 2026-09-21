@@ -1,36 +1,36 @@
 
 # RF / SDR Security Research
 
-## 适用场景
+## When to use
 
-- 无线遥控/传感器等非 Wi-Fi RF（授权）
-- ADS-B/遥控等协议研究（合法接收）
-- 与 task-wifi-assessment 分工：本 skill 偏 **SDR 通用 RF**；Wi-Fi 攻防走 R29
+- Non-Wi-Fi RF such as wireless remotes/sensors (authorized)
+- Protocol research such as ADS-B/remote control (lawful reception)
+- Division of labor with task-wifi-assessment: this skill covers **SDR general RF**; Wi-Fi offense/defense goes to R29
 
-## 工作流
+## Workflow
 
 ```text
-□ 法规与许可确认
-□ 只收：识别中心频率与调制
-□ GNU Radio / URH 分析
-□ 重放仅屏蔽室且书面允许
-□ 结论侧重：是否可未授权控制 / 加固建议
+□ Confirm regulations and licensing
+□ Receive only: identify center frequency and modulation
+□ GNU Radio / URH analysis
+□ Replay only in a shielded room and with written permission
+□ Conclusion focuses on: whether unauthorized control is possible / hardening recommendations
 ```
 
-## 工具链
+## Toolchain
 
-| 工具 | 用途 |
-|------|------|
-| RTL-SDR / HackRF（合规） | 收发硬件 |
-| URH / GNU Radio | 分析 |
-| Inspectrum | 信号 |
+| Tool | Purpose |
+|------|---------|
+| RTL-SDR / HackRF (compliant) | Transmit/receive hardware |
+| URH / GNU Radio | Analysis |
+| Inspectrum | Signals |
 
-## 参考
+## References
 
 - `sdr-lab-rules.md`
 - `the `task-wifi-assessment` skill` `the `ot-ics` skill` `the `hardware-security` skill`
 
-## 路由上下文
+## Routing context
 
-**上游**: MASTER R38  
-**MUST NOT**: 干扰公共通信、未授权发射
+**Upstream**: MASTER R38  
+**MUST NOT**: interfere with public communications, transmit without authorization

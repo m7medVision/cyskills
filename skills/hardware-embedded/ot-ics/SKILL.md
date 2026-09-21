@@ -7,10 +7,10 @@ description: "Use for authorized OT/ICS security assessment covering Purdue mode
 
 ## Workflow
 
-1. Phase 1 — 分区与资产
-2. Phase 2 — 被动与只读
-3. Phase 3 — 受限主动（仅授权）
-4. Phase 4 — 固件/补丁面
+1. Phase 1 — Zoning and assets
+2. Phase 2 — Passive and read-only
+3. Phase 3 — Restricted active (authorized only)
+4. Phase 4 — Firmware/patch surface
 
 ## References
 

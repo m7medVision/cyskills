@@ -1,17 +1,17 @@
 ---
 name: pwn-chain
-description: "从逆向走到可用利用 (Working Exploit) 的全链路工程化方法。 适用场景：拿到了二进制 + 漏洞点 + 目标环境，需要写出一个能稳定打通的 exploit（不是只能本地复现一下、远程一打就崩的脚本）。 覆盖三大方向：栈溢出 / 堆利用 / 内核 pwn。强调\"CTF 本地通 → 真实远程稳定打通\"的工程差距：libc 版本错配、堆喷射时序、SMEP/SMAP/KASLR、栈对齐、远程缓冲。 核心工具链：pwntools + GEF/pwndbg + ROPgadget/Ropper + one_gadget + libc-database + qemu-system 内核调试。 触发关键词：pwn、栈溢出、堆溢出、ROP、ret2libc、ret2csu、one_gadget、libc-database、堆利用、tcache、fastbin、unsorted bin、kernel pwn、kROP、SMEP、SMAP、KASLR、modprobe_path、pwntools、GEF、pwndbg。"
+description: "An end-to-end engineering methodology from reverse engineering to a working exploit. Use when: you have a binary + a vulnerability point + the target environment and need to write an exploit that reliably lands (not a script that only reproduces locally but crashes the moment it hits a remote). Covers three major tracks: stack overflow / heap exploitation / kernel pwn. Emphasizes the engineering gap between \"works locally in CTF → reliably lands against a real remote\": libc version mismatch, heap spray timing, SMEP/SMAP/KASLR, stack alignment, remote buffering. Core toolchain: pwntools + GEF/pwndbg + ROPgadget/Ropper + one_gadget + libc-database + qemu-system kernel debugging. Trigger keywords: pwn, stack overflow, heap overflow, ROP, ret2libc, ret2csu, one_gadget, libc-database, heap exploitation, tcache, fastbin, unsorted bin, kernel pwn, kROP, SMEP, SMAP, KASLR, modprobe_path, pwntools, GEF, pwndbg."
 ---
 
-# 从漏洞点到 Working Exploit (Pwn Chain)
+# From Vulnerability to Working Exploit (Pwn Chain)
 
 ## Workflow
 
-1. 与其他 skill 的分工
-2. 场景 1：远程 64 位二进制 (NX+PIE+canary, 给了 libc)
-3. 场景 2：Linux 内核驱动 ioctl 越界写 → 拿 root
-4. Bootstrap 检查脚本
-5. 同一工具自动安装失败 2 次后
+1. Division of labor with other skills
+2. Scenario 1: remote 64-bit binary (NX+PIE+canary, libc provided)
+3. Scenario 2: Linux kernel driver ioctl out-of-bounds write → get root
+4. Bootstrap check script
+5. After automatic installation of the same tool fails twice
 
 ## References
 
