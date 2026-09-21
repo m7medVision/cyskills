@@ -124,6 +124,7 @@
         "./skills/pentest/netexec",
         "./skills/pentest/nuclei",
         "./skills/pentest/password-cracking",
+        "./skills/pentest/pentest-core",
         "./skills/pentest/pentest-tools",
         "./skills/pentest/recon-pipeline",
         "./skills/pentest/source-leak-hunt",
