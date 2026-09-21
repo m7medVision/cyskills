@@ -1,10 +1,12 @@
 #!/usr/bin/env bash
 # Cyskills preflight: detect distro, audit tools and wordlist resources, print install hints.
+# Usage: preflight.sh [tool ...]   With tool names, audit only those and skip resources.
 # Informational only: never installs or downloads anything.
 set -uo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 # shellcheck source=/dev/null
 source "$SCRIPT_DIR/cyskills.conf"
+WANTED="$*"
 
 # --- distro detection ---
 DISTRO="unknown"; PM="none"; BLACKARCH=0; AUR=""
@@ -38,6 +40,9 @@ printf '  %-4s %-14s %s\n' "?" "tool" "install if missing"
 while IFS='|' read -r name probe apt pac aur pip purpose; do
   [ -z "$name" ] && continue
   case "$name" in \#*) continue ;; esac
+  if [ -n "$WANTED" ]; then
+    case " $WANTED " in *" $name "*) ;; *) continue ;; esac
+  fi
   if eval "$probe" </dev/null >/dev/null 2>&1; then
     printf '  %-4s %-14s %s\n' "ok" "$name" "$purpose"
   else
@@ -45,28 +50,30 @@ while IFS='|' read -r name probe apt pac aur pip purpose; do
   fi
 done < "$SCRIPT_DIR/tools.conf"
 
-echo
-echo "RESOURCES"
-printf '  %-4s %-22s %s\n' "?" "resource" "path or install"
-while IFS='|' read -r name paths sentinel apt pac aur git purpose; do
-  [ -z "$name" ] && continue
-  case "$name" in \#*) continue ;; esac
-  found=""
-  IFS=':' read -r -a cand <<< "$paths"
-  for p in "${cand[@]}"; do
-    p="${p//\$HOME/$HOME}"
-    if [ -n "$sentinel" ]; then
-      [ -e "$p/$sentinel" ] && { found="$p"; break; }
+if [ -z "$WANTED" ]; then
+  echo "RESOURCES"
+  printf '  %-4s %-22s %s\n' "?" "resource" "path or install"
+  while IFS='|' read -r name paths sentinel apt pac aur git purpose; do
+    [ -z "$name" ] && continue
+    case "$name" in \#*) continue ;; esac
+    found=""
+    IFS=':' read -r -a cand <<< "$paths"
+    for p in "${cand[@]}"; do
+      p="${p//\$HOME/$HOME}"
+      if [ -n "$sentinel" ]; then
+        [ -e "$p/$sentinel" ] && { found="$p"; break; }
+      else
+        [ -e "$p" ] && { found="$p"; break; }
+      fi
+    done
+    if [ -n "$found" ]; then
+      printf '  %-4s %-22s %s\n' "ok" "$name" "$found"
     else
-      [ -e "$p" ] && { found="$p"; break; }
+      printf '  %-4s %-22s %s\n' "MISS" "$name" "$(hint "$apt" "$pac" "$aur" "" "$git" "$name" "$purpose")"
     fi
-  done
-  if [ -n "$found" ]; then
-    printf '  %-4s %-22s %s\n' "ok" "$name" "$found"
-  else
-    printf '  %-4s %-22s %s\n' "MISS" "$name" "$(hint "$apt" "$pac" "$aur" "" "$git" "$name" "$purpose")"
-  fi
-done < "$SCRIPT_DIR/resources.conf"
+  done < "$SCRIPT_DIR/resources.conf"
+  echo
+fi
 
 echo
 echo "Nothing was installed. Ask the user before running any install command."

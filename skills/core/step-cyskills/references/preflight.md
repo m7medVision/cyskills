@@ -1,6 +1,6 @@
 # Cyskills bootstrap reference
 
-`step-cyskills` runs four scripts, all self-contained bash with no runtime dependencies beyond coreutils.
+`step-cyskills` runs five scripts, all self-contained bash with no runtime dependencies beyond coreutils.
 
 ## Config files (next to the scripts)
 
@@ -31,6 +31,23 @@ name|paths|sentinel|apt|pacman|aur|git|purpose
 | Other | no apt/pacman | `git clone` fallback or manual note |
 
 Env overrides: `SECLISTS_DIR`, `CYSKILLS_DATA`, and any `*_DIR` named in `resources.conf` are honored before the default paths.
+
+## Workflows
+
+`workflow.sh` resolves a named workflow into an ordered skill-injection plan. Manifests live in `skills/workflows/workflow-*/bundle.conf`:
+
+```
+name=web-pentest
+title=Website / API pentest
+track=web-pentest
+skills=pentest-core web-pentest recon-pipeline ... 
+tools=subfinder httpx katana nuclei ...
+```
+
+- `workflow.sh` (no args) — list available workflows.
+- `workflow.sh <name>` — print the skills in order, check each is present on disk (resolved through `catalog.conf`), then run `preflight.sh <tools>` for bundle readiness. Missing modules do not block the rest.
+
+`preflight.sh <tool> ...` audits only the named tools and skips the resources section; with no arguments it audits everything.
 
 ## Scope gate
 
