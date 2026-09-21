@@ -47,6 +47,7 @@
       "description": "Binary reverse engineering and exploit development.",
       "category": "binary-re",
       "skills": [
+        "./skills/binary-re/apk-reverse",
         "./skills/binary-re/binary-diff",
         "./skills/binary-re/binary-ninja-reverse",
         "./skills/binary-re/dotnet-reverse",
@@ -54,21 +55,12 @@
         "./skills/binary-re/go-rust-reverse",
         "./skills/binary-re/ida-reverse",
         "./skills/binary-re/macos-reverse",
+        "./skills/binary-re/mobile-reverse",
         "./skills/binary-re/patch-diff-exploit",
         "./skills/binary-re/protocol-reverse",
         "./skills/binary-re/pwn-chain",
         "./skills/binary-re/radare2",
         "./skills/binary-re/reverse-engineering"
-      ]
-    },
-    {
-      "name": "f.-mobile",
-      "source": "./",
-      "description": "Android and iOS application security.",
-      "category": "mobile",
-      "skills": [
-        "./skills/mobile/apk-reverse",
-        "./skills/mobile/mobile-reverse"
       ]
     },
     {

@@ -25,8 +25,7 @@ Nothing is installed or downloaded without your approval, and no target is touch
 | `skills/workflows/` | 3 | workflow-web-pentest, workflow-mobile-pentest, workflow-infra-pentest — declarative entrypoints |
 | `skills/cloud-identity/` | 4 | cloud-k8s, identity-federation, email-security, llm-security |
 | `skills/windows-endpoint/` | 3 | windows-ad, edr-bypass-re, thick-client |
-| `skills/binary-re/` | 12 | reverse-engineering, ida-reverse, ghidra-reverse, radare2, dotnet-reverse, pwn-chain |
-| `skills/mobile/` | 2 | apk-reverse, mobile-reverse (Android workflow → workflow-mobile-pentest; MASTG device content in pentest-core) |
+| `skills/binary-re/` | 14 | reverse-engineering, ida-reverse, ghidra-reverse, radare2, dotnet-reverse, pwn-chain, apk-reverse, mobile-reverse (Android/iOS RE; Android workflow → workflow-mobile-pentest) |
 | `skills/hardware-embedded/` | 4 | firmware-pentest, hardware-security, ot-ics, radio-sdr |
 | `skills/dfir-intel/` | 5 | digital-forensics, malware-analysis, threat-hunting, threat-intelligence |
 | `skills/pentest/` | 21 | pentest-core (engine), attack-chain (orchestrator); tools: nmap, nuclei, ffuf, sqlmap, netexec, api-mitmproxy, browser-automation, metasploit; tasks: task-recon, task-js-api-extract, task-source-leak-hunt, task-credential-recovery, task-wifi-assessment, task-code-audit, task-db-post-access, task-supply-chain, task-report; deep dives: js-reverse, src-hunter |
