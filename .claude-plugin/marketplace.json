@@ -119,6 +119,7 @@
         "./skills/pentest/diagram-generator",
         "./skills/pentest/docs-generator",
         "./skills/pentest/ffuf",
+        "./skills/pentest/infra-pentest",
         "./skills/pentest/js-api-extract",
         "./skills/pentest/nmap",
         "./skills/pentest/netexec",
