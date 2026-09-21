@@ -12,7 +12,10 @@
       "description": "Project bootstrap and preflight. Install this first.",
       "category": "core",
       "skills": [
-        "./skills/core/step-cyskills"
+        "./skills/core/step-cyskills",
+        "./skills/workflows/workflow-infra-pentest",
+        "./skills/workflows/workflow-mobile-pentest",
+        "./skills/workflows/workflow-web-pentest"
       ]
     },
     {

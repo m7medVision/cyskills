@@ -8,20 +8,21 @@ Cybersecurity skills for agents.
 npx skills add m7medvision/cyskills
 ```
 
-Then run the `step-cyskills` skill once per project. It:
+The install ships the kernel (`step-cyskills`) and every workflow entrypoint. Then just **name the workflow you want** — `workflow-web-pentest`, `workflow-mobile-pentest`, or `workflow-infra-pentest` triggers and injects the right modules in order, no skill-picking needed. `step-cyskills`:
 
 1. initializes the git workspace and writes `CONTEXT.md`;
 2. enforces the authorization scope gate (`work/<case>/scope.md`);
-3. detects your distro (Kali, BlackArch, Arch/AUR) and audits required tools and wordlist resources;
-4. lists the skills your task needs so you can install them yourself.
+3. detects your distro (Kali, BlackArch, Arch/AUR) and audits the bundle's tools and wordlist resources;
+4. resolves your workflow into an ordered skill list and loads them automatically.
 
 Nothing is installed or downloaded without your approval, and no target is touched until `scripts/scope-guard.sh` passes.
 
-## Skills (56)
+## Skills (59)
 
 | Group | Count | Examples |
 | --- | --- | --- |
-| `skills/core/` | 1 | step-cyskills — project bootstrap and preflight, install first |
+| `skills/core/` | 1 | step-cyskills — project bootstrap, preflight and workflow resolver, install first |
+| `skills/workflows/` | 3 | workflow-web-pentest, workflow-mobile-pentest, workflow-infra-pentest — declarative entrypoints |
 | `skills/web-app/` | 7 | api-security, api-mitmproxy, code-audit, js-reverse, browser-automation (single browser entry), supply-chain-security |
 | `skills/cloud-identity/` | 4 | cloud-k8s, identity-federation, email-security, llm-security |
 | `skills/windows-endpoint/` | 3 | windows-ad, edr-bypass-re, thick-client |

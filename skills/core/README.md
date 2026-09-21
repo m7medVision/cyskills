@@ -1,5 +1,5 @@
 # Core
 
-Project bootstrap and preflight. Install this first.
+Project bootstrap, preflight, and the workflow resolver. Install this first.
 
-- **[step-cyskills](./step-cyskills/SKILL.md)**: Bootstrap a real-work cybersecurity engagement in a new project
+- **[step-cyskills](./step-cyskills/SKILL.md)**: Bootstrap an engagement, enforce scope, audit tools, and resolve the chosen workflow into an auto-injected skill bundle
