@@ -13,7 +13,7 @@ Then run the `step-cyskills` skill once per project. It:
 1. initializes the git workspace and writes `CONTEXT.md`;
 2. enforces the authorization scope gate (`work/<case>/scope.md`);
 3. detects your distro (Kali, BlackArch, Arch/AUR) and audits required tools and wordlist resources;
-4. prints the exact `npx skills add` command for the skills your task needs.
+4. lists the skills your task needs so you can install them yourself.
 
 Nothing is installed or downloaded without your approval, and no target is touched until `scripts/scope-guard.sh` passes.
 

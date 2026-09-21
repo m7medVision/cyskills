@@ -5,7 +5,7 @@
 ## Config files (next to the scripts)
 
 `cyskills.conf`
-: `CYSKILLS_SOURCE` — GitHub `owner/repo` printed by `recommend.sh`. `CYSKILLS_DATA` — base dir for self-installed resources (default `~/tools`). Override either by env var.
+: `CYSKILLS_DATA` — base dir for self-installed resources (default `~/tools`). Override by env var.
 
 `tools.conf` — one tool per line:
 ```
