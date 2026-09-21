@@ -7,7 +7,7 @@
 - OIDC 隐式/授权码 + PKCE 缺失
 - redirect_uri / state / nonce 问题
 - IdP 与 SP 元数据、多租户 issuer 混淆
-- 与 `api-security` JWT 攻击互补（本 skill 偏联邦与 SSO 流）
+- 与 `pentest-core` JWT 攻击互补（本 skill 偏联邦与 SSO 流）
 
 ## 工作流
 
@@ -31,9 +31,9 @@
 ## 参考
 
 - `sso-flow-checklist.md`
-- `the `api-security` skill` `the `windows-ad` skill`（企业 IdP）
+- `the `pentest-core` skill` `the `windows-ad` skill`（企业 IdP）
 
 ## 路由上下文
 
 **上游**: MASTER R37  
-**下游**: 纯 API JWT → api-security；云 IdP → cloud-k8s
+**下游**: 纯 API JWT → pentest-core；云 IdP → cloud-k8s

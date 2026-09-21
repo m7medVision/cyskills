@@ -7,7 +7,7 @@
 - IAM 过度权限、公开存储桶、错误安全组
 - Docker/containerd 逃逸路径评估
 - Kubernetes RBAC、Secrets、Admission、供应链镜像
-- 容器镜像漏洞（可联动 `supply-chain-security/`）
+- 容器镜像漏洞（可联动 `task-supply-chain/`）
 
 ## 工作流
 
@@ -71,7 +71,7 @@ kubectl get clusterrolebindings
 ## 参考
 
 - `k8s-cloud-checklist.md`
-- `the `supply-chain-security` skill` `the `pentest-tools` skill`
+- `the `task-supply-chain` skill` `the `pentest-core` skill`
 
 ## 路由上下文
 

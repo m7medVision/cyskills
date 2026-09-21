@@ -5,7 +5,7 @@
 
 - 无线遥控/传感器等非 Wi-Fi RF（授权）
 - ADS-B/遥控等协议研究（合法接收）
-- 与 wifi-wireless 分工：本 skill 偏 **SDR 通用 RF**；Wi-Fi 攻防走 R29
+- 与 task-wifi-assessment 分工：本 skill 偏 **SDR 通用 RF**；Wi-Fi 攻防走 R29
 
 ## 工作流
 
@@ -28,7 +28,7 @@
 ## 参考
 
 - `sdr-lab-rules.md`
-- `the `wifi-wireless` skill` `the `ot-ics` skill` `the `hardware-security` skill`
+- `the `task-wifi-assessment` skill` `the `ot-ics` skill` `the `hardware-security` skill`
 
 ## 路由上下文
 

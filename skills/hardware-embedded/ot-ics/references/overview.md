@@ -65,7 +65,7 @@ MUST NOT 在未明确允许时：
 ## 参考
 
 - `ot-safe-assessment.md`
-- `the `firmware-pentest` skill` `the `protocol-reverse` skill` `../network` via pentest-tools
+- `the `firmware-pentest` skill` `the `protocol-reverse` skill` `../network` via pentest-core
 
 ## 路由上下文
 

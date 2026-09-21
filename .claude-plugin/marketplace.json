@@ -19,21 +19,6 @@
       ]
     },
     {
-      "name": "b.-web-app",
-      "source": "./",
-      "description": "Web and application security: APIs, databases, browsers, code review, supply chain.",
-      "category": "web-app",
-      "skills": [
-        "./skills/web-app/api-mitmproxy",
-        "./skills/web-app/api-security",
-        "./skills/web-app/browser-automation",
-        "./skills/web-app/code-audit",
-        "./skills/web-app/database-security",
-        "./skills/web-app/js-reverse",
-        "./skills/web-app/supply-chain-security"
-      ]
-    },
-    {
       "name": "c.-cloud-identity",
       "source": "./",
       "description": "Cloud, identity, email and LLM attack surfaces.",
@@ -114,24 +99,31 @@
     {
       "name": "i.-pentest",
       "source": "./",
-      "description": "Penetration testing pipeline: orchestration, recon, scanning, web exploitation, credential attacks, and reporting.",
+      "description": "Penetration testing: engine, orchestration, per-tool skills, task steps and deep dives.",
       "category": "pentest",
       "skills": [
+        "./skills/pentest/api-mitmproxy",
         "./skills/pentest/attack-chain",
-        "./skills/pentest/diagram-generator",
-        "./skills/pentest/docs-generator",
+        "./skills/pentest/browser-automation",
         "./skills/pentest/ffuf",
-        "./skills/pentest/js-api-extract",
-        "./skills/pentest/nmap",
+        "./skills/pentest/js-reverse",
+        "./skills/pentest/metasploit",
         "./skills/pentest/netexec",
+        "./skills/pentest/nmap",
         "./skills/pentest/nuclei",
-        "./skills/pentest/password-cracking",
         "./skills/pentest/pentest-core",
-        "./skills/pentest/pentest-tools",
-        "./skills/pentest/recon-pipeline",
-        "./skills/pentest/source-leak-hunt",
         "./skills/pentest/sqlmap",
-        "./skills/pentest/wifi-wireless"
+        "./skills/pentest/src-hunter",
+        "./skills/pentest/task-code-audit",
+        "./skills/pentest/task-credential-recovery",
+        "./skills/pentest/task-db-post-access",
+        "./skills/pentest/task-diagram",
+        "./skills/pentest/task-js-api-extract",
+        "./skills/pentest/task-recon",
+        "./skills/pentest/task-report",
+        "./skills/pentest/task-source-leak-hunt",
+        "./skills/pentest/task-supply-chain",
+        "./skills/pentest/task-wifi-assessment"
       ]
     }
   ]

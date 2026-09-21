@@ -107,7 +107,7 @@ The command is read-only with respect to the case unless shell redirection is ex
 
 ## 建议下一步（选一个编号）
 
-1. 将通过的 review 结果交给 `docs-generator/` 生成正式报告
+1. 将通过的 review 结果交给 `task-report/` 生成正式报告
 2. 回到 PRIMARY skill 补齐新的分析证据
 3. 归档 Markdown 和 JSON review 结果
 4. 暂停并请求人工复核
@@ -126,9 +126,9 @@ This skill has no third-party dependency. If Python 3 is unavailable, the only a
 
 **Upstream entry**: any reverse, forensics, CTF, or authorized security skill that has produced a case package.
 
-**Downstream exit**: `docs-generator/` for a formal report, or the original PRIMARY skill when the graph is incomplete.
+**Downstream exit**: `task-report/` for a formal report, or the original PRIMARY skill when the graph is incomplete.
 
-**Related modules**: `ops/evidence-finding-path.md`, `ops/timeline-workitem.md`, `digital-forensics/`, `reverse-engineering/`, and `docs-generator/`.
+**Related modules**: `ops/evidence-finding-path.md`, `ops/timeline-workitem.md`, `digital-forensics/`, `reverse-engineering/`, and `task-report/`.
 
 ## References
 

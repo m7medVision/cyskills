@@ -140,6 +140,6 @@ P-TI-001: 可复现查询和验证路径
 
 **下游**: 检测与阻断 → `threat-hunting/`；样本 → `malware-analysis/`；邮件 → `email-security/`；案件保全 → `digital-forensics/`
 
-**同级**: 资产侦察 → `pentest-tools/`
+**同级**: 资产侦察 → `pentest-core/`
 
 **MUST NOT**: 把公开帖子当作已确认归属、漏洞或恶意 IOC

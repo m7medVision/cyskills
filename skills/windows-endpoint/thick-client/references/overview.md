@@ -54,9 +54,9 @@
 ## 参考
 
 - `thick-client-checklist.md`
-- `the `dotnet-reverse` skill` `the `ida-reverse` skill` `the `js-reverse` skill` `the `api-security` skill`
+- `the `dotnet-reverse` skill` `the `ida-reverse` skill` `the `js-reverse` skill` `the `pentest-core` skill`
 
 ## 路由上下文
 
 **上游**: MASTER R32  
-**下游**: 纯协议 `protocol-reverse`；供应链更新 `supply-chain-security`
+**下游**: 纯协议 `protocol-reverse`；供应链更新 `task-supply-chain`

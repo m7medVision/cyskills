@@ -216,7 +216,7 @@ Blindspots (Rust/Go/VMP/injection/OLE/PDF/agent-meta): [analysis-blindspot-cookb
 □ Finding：算法/校验逻辑/可利用点 / 行为结论
 □ Path：callflow 或 solve 步骤挂 E-*
 □ IOC：网络指纹 + 主机指纹（有则表；无则 n/a+原因）
-□ 报告 docs-generator（malware/apt/null/vuln overlay 按任务选型）+ 可选图
+□ 报告 task-report（malware/apt/null/vuln overlay 按任务选型）+ 可选图
 □ 可选：YARA / Snort·Suricata 规则化沉淀
 □ field-journal 脱敏
 ```
@@ -230,7 +230,7 @@ Blindspots (Rust/Go/VMP/injection/OLE/PDF/agent-meta): [analysis-blindspot-cookb
 | 3 基础静态锚点 | §2 Static | 高危 API 组合；时间盒 SHOULD |
 | 4 深度交叉验证 | §3 Dynamic | 断点四级火箭；无行为应急；时间盒；§3.3 A–T；§3.4 U–AV 类型路由 |
 | 5 提取 IoC 与攻击链 | §4 Synthesis | IOC + Kill Chain / Path |
-| 6 归档与规则化 | §4 + docs-generator / YARA | 结构化报告；规则可选 |
+| 6 归档与规则化 | §4 + task-report / YARA | 结构化报告；规则可选 |
 
 ## 6. 与「堆 RE skill 插件」的差异
 

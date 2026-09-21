@@ -100,14 +100,14 @@ Effort band + A-T pointers -> `E-anti-adversarial` (**no** A-T table copy).
 |----|---------|
 | R5 | content_hash; evidence-finding-path + review_case --verify-hashes |
 | R12 | parallel hypotheses via R2 (no heavy case-branch product) |
-| R22 | docs-generator executive summary MUST |
+| R22 | task-report executive summary MUST |
 | R23 | IOC dual-channel **only** explicit_malware / user IOC; forbidden default ordinary RE |
 | R28 | authorized lab; no full weaponized exploit chain in-repo |
 | R34 | SHOULD journal stale note; **no** 90-day auto engine |
 | R36 | archive feedback one-liner |
 | R38-R40 | pointer -> llm-security only |
 | R42 | YARA/detections experimental until benign validation |
-| R45-R49 | route cloud-k8s / firmware / pentest-pwn / code-audit; limit confidence if missing context |
+| R45-R49 | route cloud-k8s / firmware / pentest-pwn / task-code-audit; limit confidence if missing context |
 
 ### Downgrades (not Agent runtime MUST)
 

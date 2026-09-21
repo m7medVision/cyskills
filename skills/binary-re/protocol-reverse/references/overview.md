@@ -14,7 +14,7 @@
 | 情况 | 去哪 |
 |------|------|
 | 仅 HTTP 参数签名 / JS 加密 | `js-reverse/` |
-| 仅 TLS 证书问题 | `pentest-tools/` 或浏览器代理 |
+| 仅 TLS 证书问题 | `pentest-core/` 或浏览器代理 |
 | 固件内协议栈深挖 + 仿真 | `firmware-pentest/` 后再回本 skill |
 
 ## 工作流
@@ -70,10 +70,10 @@ MUST 产出：
 ## 参考
 
 - `protocol-workflow.md` — 帧布局与 Protobuf 速查
-- 相关：`the `ida-reverse` skill` `the `js-reverse` skill` `the `firmware-pentest` skill` `the `pentest-tools` skill`
+- 相关：`the `ida-reverse` skill` `the `js-reverse` skill` `the `firmware-pentest` skill` `the `pentest-core` skill`
 
 ## 路由上下文
 
 **上游**: `MASTER-ROUTING` R21 · routing.md  
-**下游**: 需客户端算法 → `ida-reverse`/`js-reverse`；需利用重放 → `pentest-tools`/`api-security`  
+**下游**: 需客户端算法 → `ida-reverse`/`js-reverse`；需利用重放 → `pentest-core`/`pentest-core`  
 **同级**: `malware-analysis`（C2 协议）、`digital-forensics`（流量取证）

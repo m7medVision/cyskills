@@ -23,7 +23,7 @@
 | 场景 | 用什么 |
 |------|--------|
 | 全链路攻防（从外网打到域控） | `attack-chain/` |
-| 内网横向 / AD 攻击 | `pentest-tools/network-attack-defense.md` |
+| 内网横向 / AD 攻击 | `windows-ad/references/network-attack-defense.md` |
 | 在某个特定主机上要过 EDR 投递 implant | **本 skill** |
 | 单纯静态免杀（混淆 / 加壳） | `malware-analysis/`（反向视角） |
 
@@ -184,7 +184,7 @@ powershell -NoProfile -ExecutionPolicy Bypass -File "&lt;SKILL_ROOT&gt;\skills\s
 
 **同级关联**：
 
-- `pentest-tools/network-attack-defense.md` — 内网横向时如何与本 skill 联动
+- `windows-ad/references/network-attack-defense.md` — 内网横向时如何与本 skill 联动
 - `malware-analysis/` — 反向视角，看检测方怎么写规则
 - `field-journal/` — 每次实战后回写经验
 
