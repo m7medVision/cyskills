@@ -52,7 +52,8 @@ resolve() {
   track="$(manifest "$bf" track)"
   skills="$(manifest "$bf" skills)"; tools="$(manifest "$bf" tools)"
   echo "workflow: $name — $title"
-  echo "inject (Skill tool, in order, then follow ${track:-$name}):"
+  echo "inject (Skill tool, in order; engine: pentest-core):"
+  [ -n "$track" ] && echo "case track: $track"
   for s in $skills; do
     i=$((i+1))
     if p="$(skill_dir "$s")"; then

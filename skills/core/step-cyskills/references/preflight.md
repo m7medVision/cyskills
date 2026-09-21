@@ -39,8 +39,8 @@ Env overrides: `SECLISTS_DIR`, `CYSKILLS_DATA`, and any `*_DIR` named in `resour
 ```
 name=web-pentest
 title=Website / API pentest
-track=web-pentest
-skills=pentest-core web-pentest recon-pipeline ... 
+track=web
+skills=pentest-core recon-pipeline js-api-extract source-leak-hunt nuclei api-mitmproxy browser-automation
 tools=subfinder httpx katana nuclei ...
 ```
 

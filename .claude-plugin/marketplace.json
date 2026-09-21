@@ -83,7 +83,6 @@
       "category": "mobile",
       "skills": [
         "./skills/mobile/apk-reverse",
-        "./skills/mobile/mobile-pentest",
         "./skills/mobile/mobile-reverse"
       ]
     },
@@ -122,7 +121,6 @@
         "./skills/pentest/diagram-generator",
         "./skills/pentest/docs-generator",
         "./skills/pentest/ffuf",
-        "./skills/pentest/infra-pentest",
         "./skills/pentest/js-api-extract",
         "./skills/pentest/nmap",
         "./skills/pentest/netexec",
@@ -133,7 +131,6 @@
         "./skills/pentest/recon-pipeline",
         "./skills/pentest/source-leak-hunt",
         "./skills/pentest/sqlmap",
-        "./skills/pentest/web-pentest",
         "./skills/pentest/wifi-wireless"
       ]
     }
