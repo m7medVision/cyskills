@@ -1,0 +1,16 @@
++ echo '== MASTG device checks: com.ex.app (device R58T33RP02P) =='
+== MASTG device checks: com.ex.app (device R58T33RP02P) ==
++ echo
+
++ echo '## MASTG-PLATFORM - IPC, exported components, backup, deeplinks'
+## MASTG-PLATFORM - IPC, exported components, backup, deeplinks
++ command -v drozer
++ echo '[*] drozer attack surface'
+[*] drozer attack surface
++ drozer console connect -c 'run app.package.attacksurface com.ex.app'
++ echo '    drozer agent not running — install/start the drozer agent APK'
+    drozer agent not running — install/start the drozer agent APK
++ A shell 'dumpsys package com.ex.app'
++ adb -s R58T33RP02P shell 'dumpsys package com.ex.app'
++ grep -iE 'ALLOW_BACKUP|DEBUGGABLE|exported'
++ head -20
