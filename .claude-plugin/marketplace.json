@@ -7,114 +7,12 @@
   "description": "Cybersecurity skills for real work: offensive, reverse engineering, DFIR and tooling.",
   "plugins": [
     {
-      "name": "a.-core",
+      "name": "cyskills",
       "source": "./",
-      "description": "Project bootstrap and preflight. Install this first.",
+      "description": "One kernel + module library: pentest, reverse engineering, DFIR, cloud/identity, hardware.",
       "category": "core",
       "skills": [
-        "./skills/core/step-cyskills",
-        "./skills/workflows/workflow-infra-pentest",
-        "./skills/workflows/workflow-mobile-pentest",
-        "./skills/workflows/workflow-web-pentest"
-      ]
-    },
-    {
-      "name": "c.-cloud-identity",
-      "source": "./",
-      "description": "Cloud, identity, email and LLM attack surfaces.",
-      "category": "cloud-identity",
-      "skills": [
-        "./skills/cloud-identity/cloud-k8s",
-        "./skills/cloud-identity/email-security",
-        "./skills/cloud-identity/identity-federation",
-        "./skills/cloud-identity/llm-security"
-      ]
-    },
-    {
-      "name": "d.-windows-endpoint",
-      "source": "./",
-      "description": "Windows, Active Directory, endpoint evasion and thick clients.",
-      "category": "windows-endpoint",
-      "skills": [
-        "./skills/windows-endpoint/edr-bypass-re",
-        "./skills/windows-endpoint/thick-client",
-        "./skills/windows-endpoint/windows-ad"
-      ]
-    },
-    {
-      "name": "e.-reverse-engineering",
-      "source": "./",
-      "description": "Binary reverse engineering and exploit development.",
-      "category": "binary-re",
-      "skills": [
-        "./skills/binary-re/apk-reverse",
-        "./skills/binary-re/binary-diff",
-        "./skills/binary-re/binary-ninja-reverse",
-        "./skills/binary-re/dotnet-reverse",
-        "./skills/binary-re/ghidra-reverse",
-        "./skills/binary-re/go-rust-reverse",
-        "./skills/binary-re/ida-reverse",
-        "./skills/binary-re/macos-reverse",
-        "./skills/binary-re/mobile-reverse",
-        "./skills/binary-re/patch-diff-exploit",
-        "./skills/binary-re/protocol-reverse",
-        "./skills/binary-re/pwn-chain",
-        "./skills/binary-re/radare2",
-        "./skills/binary-re/reverse-engineering"
-      ]
-    },
-    {
-      "name": "g.-hardware-embedded",
-      "source": "./",
-      "description": "Firmware, hardware, OT/ICS and RF/SDR assessment.",
-      "category": "hardware-embedded",
-      "skills": [
-        "./skills/hardware-embedded/firmware-pentest",
-        "./skills/hardware-embedded/hardware-security",
-        "./skills/hardware-embedded/ot-ics",
-        "./skills/hardware-embedded/radio-sdr"
-      ]
-    },
-    {
-      "name": "h.-forensics-intel",
-      "source": "./",
-      "description": "Forensics, malware analysis, threat hunting and intelligence.",
-      "category": "dfir-intel",
-      "skills": [
-        "./skills/dfir-intel/case-review",
-        "./skills/dfir-intel/digital-forensics",
-        "./skills/dfir-intel/malware-analysis",
-        "./skills/dfir-intel/threat-hunting",
-        "./skills/dfir-intel/threat-intelligence"
-      ]
-    },
-    {
-      "name": "i.-pentest",
-      "source": "./",
-      "description": "Penetration testing: engine, orchestration, per-tool skills, task steps and deep dives.",
-      "category": "pentest",
-      "skills": [
-        "./skills/pentest/api-mitmproxy",
-        "./skills/pentest/attack-chain",
-        "./skills/pentest/browser-automation",
-        "./skills/pentest/ffuf",
-        "./skills/pentest/js-reverse",
-        "./skills/pentest/metasploit",
-        "./skills/pentest/netexec",
-        "./skills/pentest/nmap",
-        "./skills/pentest/nuclei",
-        "./skills/pentest/pentest-core",
-        "./skills/pentest/sqlmap",
-        "./skills/pentest/src-hunter",
-        "./skills/pentest/task-code-audit",
-        "./skills/pentest/task-credential-recovery",
-        "./skills/pentest/task-db-post-access",
-        "./skills/pentest/task-js-api-extract",
-        "./skills/pentest/task-recon",
-        "./skills/pentest/task-report",
-        "./skills/pentest/task-source-leak-hunt",
-        "./skills/pentest/task-supply-chain",
-        "./skills/pentest/task-wifi-assessment"
+        "./"
       ]
     }
   ]

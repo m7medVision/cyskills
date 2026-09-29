@@ -1,34 +1,37 @@
 # cyskills
 
-Cybersecurity skills for agents.
+One cybersecurity skill for agents: a kernel that bootstraps the engagement, enforces the authorization scope gate, and routes any task to an ordered list of modules.
 
-## Install the core
+## Install
 
 ```bash
 npx skills add m7medvision/cyskills
 ```
 
-The install ships the kernel (`step-cyskills`) and every workflow entrypoint. Then just **name the workflow you want** — `workflow-web-pentest`, `workflow-mobile-pentest`, or `workflow-infra-pentest` triggers and injects the right modules in order, no skill-picking needed. `step-cyskills`:
+## Use
 
-1. initializes the git workspace and writes `CONTEXT.md`;
-2. enforces the authorization scope gate (`work/<case>/scope.md`);
-3. detects your distro (Kali, BlackArch, Arch/AUR) and audits the bundle's tools and wordlist resources;
-4. resolves your workflow into an ordered skill list and loads them automatically.
+Name a preset — `web-pentest`, `mobile-pentest`, or `infra-pentest` — or just describe the task. The kernel writes `CONTEXT.md`, gates every target action behind `work/<case>/scope.md`, and the router prints which modules to read, in order:
 
-Nothing is installed or downloaded without your approval, and no target is touched until `scripts/scope-guard.sh` passes.
+```bash
+scripts/router.sh --workflow web-pentest    # ordered preset bundle
+scripts/router.sh "analyze malware sample"  # keyword match over all modules
+scripts/router.sh --list                    # available presets
+scripts/router.sh --check                   # validate bundles + frontmatter
+```
 
-## Skills (55)
+Tools are assumed present on the machine; nothing is installed or downloaded, and no target is touched until the scope gate passes.
+
+## Modules (52)
 
 | Group | Count | Examples |
 | --- | --- | --- |
-| `skills/core/` | 1 | step-cyskills — project bootstrap, preflight and workflow resolver, install first |
-| `skills/workflows/` | 3 | workflow-web-pentest, workflow-mobile-pentest, workflow-infra-pentest — declarative entrypoints |
-| `skills/cloud-identity/` | 4 | cloud-k8s, identity-federation, email-security, llm-security |
-| `skills/windows-endpoint/` | 3 | windows-ad, edr-bypass-re, thick-client |
-| `skills/binary-re/` | 14 | reverse-engineering, ida-reverse, ghidra-reverse, radare2, dotnet-reverse, pwn-chain, apk-reverse, mobile-reverse (Android/iOS RE; Android workflow → workflow-mobile-pentest) |
-| `skills/hardware-embedded/` | 4 | firmware-pentest, hardware-security, ot-ics, radio-sdr |
-| `skills/dfir-intel/` | 5 | digital-forensics, malware-analysis, threat-hunting, threat-intelligence |
-| `skills/pentest/` | 21 | pentest-core (engine), attack-chain (orchestrator); tools: nmap, nuclei, ffuf, sqlmap, netexec, api-mitmproxy, browser-automation, metasploit; tasks: task-recon, task-js-api-extract, task-source-leak-hunt, task-credential-recovery, task-wifi-assessment, task-code-audit, task-db-post-access, task-supply-chain, task-report; deep dives: js-reverse, src-hunter |
+| `modules/core/` | 1 | tooling — tool readiness check + modern bootstrap (uv, bun, go, prebuilt); hands install commands to the user |
+| `modules/pentest/` | 21 | pentest-core (engine), attack-chain (orchestrator); tools: nmap, nuclei, ffuf, sqlmap, netexec, api-mitmproxy, browser-automation, metasploit; tasks: task-recon, task-js-api-extract, task-source-leak-hunt, task-credential-recovery, task-wifi-assessment, task-code-audit, task-db-post-access, task-supply-chain, task-report; deep dives: js-reverse, src-hunter |
+| `modules/binary-re/` | 14 | reverse-engineering, ida-reverse, ghidra-reverse, radare2, dotnet-reverse, pwn-chain, apk-reverse, mobile-reverse (Android/iOS RE) |
+| `modules/dfir-intel/` | 5 | digital-forensics, malware-analysis, threat-hunting, threat-intelligence, case-review |
+| `modules/cloud-identity/` | 4 | cloud-k8s, identity-federation, email-security, llm-security |
+| `modules/hardware-embedded/` | 4 | firmware-pentest, hardware-security, ot-ics, radio-sdr |
+| `modules/windows-endpoint/` | 3 | windows-ad, edr-bypass-re, thick-client |
 
 ## Attribution
 
